@@ -7,8 +7,8 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 
 | #   | Requirement                                                                       | Phase | Status                                                   |
 | --- | --------------------------------------------------------------------------------- | ----- | -------------------------------------------------------- |
-| 1   | Premium, professional invoice UI                                                  | 01–02 | ⬜                                                       |
-| 2   | Responsive desktop and mobile layouts                                             | 01–02 | ⬜                                                       |
+| 1   | Premium, professional invoice UI                                                  | 01–02 | ✅                                                       |
+| 2   | Responsive desktop and mobile layouts                                             | 01–02 | ✅                                                       |
 | 3   | Functional invoice editor and live preview                                        | 02    | ✅                                                       |
 | 4   | Dynamic line items (add / edit / remove)                                          | 02    | ✅                                                       |
 | 5   | Correct discount and tax sequence                                                 | 03    | ✅                                                       |
@@ -20,15 +20,15 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 | 11  | Invoice retrieval after reload                                                    | 06    | ❌ descoped by developer                                 |
 | 12  | Invoice list and management                                                       | 07    | ❌ descoped by developer                                 |
 | 13  | Real email delivery when configured (Resend, replaces SMTP by developer decision) | 08    | ✅ implemented; real-account send pending developer test |
-| 14  | No fake success states                                                            | all   | ⬜                                                       |
-| 15  | Tests, lint, type checks and build run and documented                             | 09    | ⬜                                                       |
-| 16  | Phase-wise Git commits                                                            | all   | ⬜ (Phase 00 pending commit)                             |
+| 14  | No fake success states                                                            | all   | ✅                                                       |
+| 15  | Tests, lint, type checks and build run and documented                             | 09    | ✅                                                       |
+| 16  | Phase-wise Git commits                                                            | all   | ✅                                                       |
 | 17  | Prompt files saved in the repository                                              | 00    | ✅                                                       |
-| 18  | Phase documentation saved and committed                                           | all   | ⬜                                                       |
+| 18  | Phase documentation saved and committed                                           | all   | ✅                                                       |
 | 19  | README and `.env.example` included                                                | 00    | ✅                                                       |
-| 20  | No credentials or secrets committed                                               | all   | ⬜ (verified per commit)                                 |
-| 21  | GitHub push status accurately reported                                            | 10    | ⬜                                                       |
-| 22  | Unfinished work clearly documented                                                | 10    | ⬜                                                       |
+| 20  | No credentials or secrets committed                                               | all   | ✅                                                       |
+| 21  | GitHub push status accurately reported                                            | 10    | ✅ not pushed yet                                        |
+| 22  | Unfinished work clearly documented                                                | 10    | ✅                                                       |
 
 ## Data requirements
 

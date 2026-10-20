@@ -13,7 +13,8 @@ Budget: 3 hours.
 | 04 Custom fields             | 17:06 | 17:10 | ~4 min   | Section, helper + tests, e2e, mobile fix                              |
 | 05 Print / PDF               | 17:11 | 17:19 | ~8 min   | Print stylesheet, button, PDF checks, page-break fix                  |
 | 08 Email (SMTP, then Resend) | 17:27 | 17:42 | ~15 min  | SMTP version built + tested, switched to Resend on request, re-tested |
+| 09–10 Testing & review       | 17:56 | 18:03 | ~7 min   | Full checks, audit fix, final docs                                    |
 
-**Running total:** ~69 min
+**Running total:** ~76 min (16:18–18:03 wall clock; gaps were waiting for the developer's commits)
 
 Developer review / commit time between phases is not included unless noted.

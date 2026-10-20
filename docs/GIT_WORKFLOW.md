@@ -51,7 +51,8 @@ commit order:
 | 06/07 | `7bd136d` | `chore: remove database layer and descope invoice management` |
 | 04    | `db67053` | `feat: add customizable invoice fields`                       |
 | 05    | `a5eb734` | `feat: implement invoice print layout`                        |
-| 08    | _pending_ | `feat: integrate Resend email delivery`                       |
+| 08    | `c626d6c` | `feat: integrate Resend email delivery`                       |
+| 09–10 | _pending_ | `test: verify invoice workflows and document setup`           |
 
 ## Pushing
 

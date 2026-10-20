@@ -45,6 +45,10 @@ Only results from commands that were actually run are recorded here.
 | 2026-10-20 | 08    | `npm run e2e:email` (Resend, fake local API)             | ✅ 22/22                                                      |
 | 2026-10-20 | 08    | `npm run e2e` (all suites)                               | ✅ 26/26, 23/23, 19/19, 19/19, 22/22                          |
 | 2026-10-20 | 08    | Real Resend delivery                                     | ⏳ not run — no key in `.env` yet                             |
+| 2026-10-20 | 09    | typecheck / lint / format / build                        | ✅                                                            |
+| 2026-10-20 | 09    | `npm test`                                               | ✅ 66/66                                                      |
+| 2026-10-20 | 09    | `npm run e2e` (5 suites)                                 | ✅ 26, 23, 19, 19, 22 — 109/109                               |
+| 2026-10-20 | 09    | `npm audit --omit=dev`                                   | ✅ 0 vulnerabilities                                          |
 
 ## Browser (e2e) checks
 
@@ -60,4 +64,4 @@ to save screenshots.
 `src/lib/invoice/calculations.test.ts` and `schema.test.ts` cover every case required by the brief;
 the mapping is in [phases/PHASE_03_CALCULATIONS.md](phases/PHASE_03_CALCULATIONS.md#verification-results-actual).
 
-The manual verification checklist is completed in Phase 09.
+Manual-verification checklist: [phases/PHASE_09_TESTING.md](phases/PHASE_09_TESTING.md).

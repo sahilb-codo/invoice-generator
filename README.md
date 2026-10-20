@@ -4,8 +4,18 @@ A customizable, browser-based invoice generator: edit an invoice with a live pre
 it as PDF, and email it through Resend. No database: the invoice lives in the browser tab (persistence
 was descoped by the developer — see [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md#scope-changes)).
 
-> **Status:** Phases 00–05 and 08 (setup, design system, editor + live preview, calculations, custom fields, print / PDF, Resend email) complete; 06–07 descoped. Features are added phase by phase — see
-> [docs/phases/](docs/phases/) for what is actually implemented and verified.
+> **Status:** complete within scope. Database / invoice list descoped by the developer; real
+> Resend delivery pending a test with the developer's key. Details: [docs/phases/](docs/phases/).
+
+## Features
+
+- Editor with live preview; desktop split view, mobile Editor/Preview tabs
+- Line items, fixed or % discount, tax — integer-cent engine, $99.00 example verified
+- Custom fields with show / hide (hidden fields never printed or emailed)
+- Print / Save as PDF (A4 print stylesheet, multi-page safe) — [sample PDF](docs/samples/invoice-sample.pdf)
+- Email via Resend from a Server Action (validated, server-recalculated, rate-limited)
+
+![Desktop](docs/screenshots/phase-04-custom-fields.png)
 
 ## Tech stack
 

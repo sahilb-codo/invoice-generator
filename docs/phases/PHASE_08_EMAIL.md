@@ -2,7 +2,7 @@
 
 **Status:** Implemented and verified against a local fake Resend API. **Real delivery through
 Resend not yet verified** — needs the developer's API key in `.env` and a test send to their own
-address (see below). Awaiting the developer's commit.
+address (see below). Committed as `c626d6c`.
 
 Prompt: [08-email-integration.md](../prompts/08-email-integration.md)
 
@@ -142,7 +142,7 @@ and send to an address you control.
 ## Git commit
 
 - Suggested message: `feat: integrate Resend email delivery`
-- Hash: _to be recorded at the start of Phase 09_
+- Hash: `c626d6c`
 
 ## Next phase
 
