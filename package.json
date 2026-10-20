@@ -15,8 +15,9 @@
     "check": "npm run typecheck && npm run lint && npm run test",
     "e2e:editor": "node scripts/e2e/editor.e2e.mjs",
     "e2e:calculations": "node scripts/e2e/calculations.e2e.mjs",
-    "e2e": "node scripts/e2e/editor.e2e.mjs && node scripts/e2e/calculations.e2e.mjs && node scripts/e2e/custom-fields.e2e.mjs",
-    "e2e:custom-fields": "node scripts/e2e/custom-fields.e2e.mjs"
+    "e2e": "node scripts/e2e/editor.e2e.mjs && node scripts/e2e/calculations.e2e.mjs && node scripts/e2e/custom-fields.e2e.mjs && node scripts/e2e/print.e2e.mjs",
+    "e2e:custom-fields": "node scripts/e2e/custom-fields.e2e.mjs",
+    "e2e:print": "node scripts/e2e/print.e2e.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",

@@ -35,15 +35,12 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
 
   return (
     <FormProvider {...form}>
-      <div className="flex min-h-dvh flex-col">
+      <div data-print="flow" className="flex min-h-dvh flex-col">
         <AppHeader
           context={<HeaderContext control={form.control} />}
           actions={
             <>
-              <Button variant="ghost" size="lg" disabled title="Available in Phase 05">
-                <Printer aria-hidden />
-                <span className="hidden sm:inline">Print</span>
-              </Button>
+              <PrintButton control={form.control} />
               <Button size="lg" disabled title="Available in Phase 08">
                 <Mail aria-hidden />
                 <span className="hidden sm:inline">Send invoice</span>
@@ -52,7 +49,7 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
           }
         />
 
-        <main className="flex-1">
+        <main data-print="flow" className="flex-1">
           <WorkspaceLayout
             editor={
               <form noValidate onSubmit={(event) => event.preventDefault()} className="space-y-5">
@@ -72,6 +69,39 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
         </main>
       </div>
     </FormProvider>
+  );
+}
+
+/**
+ * Opens the browser's print dialog ("Save as PDF" is a destination there).
+ * The document title becomes the suggested PDF file name while the dialog is open.
+ */
+function PrintButton({ control }: { control: Control<InvoiceData> }) {
+  const [invoiceNumber, customerName] = useWatch({
+    control,
+    name: ["invoiceNumber", "customer.name"],
+  });
+
+  function print() {
+    const previousTitle = document.title;
+    document.title = ["Invoice", invoiceNumber, customerName && `— ${customerName}`]
+      .filter(Boolean)
+      .join(" ");
+    window.addEventListener("afterprint", () => (document.title = previousTitle), { once: true });
+    window.print();
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="lg"
+      onClick={print}
+      title="Print or save as PDF"
+      aria-label="Print or save as PDF"
+    >
+      <Printer aria-hidden />
+      <span className="hidden sm:inline">Print / PDF</span>
+    </Button>
   );
 }
 

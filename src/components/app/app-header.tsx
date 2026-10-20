@@ -11,7 +11,10 @@ interface AppHeaderProps {
 
 export function AppHeader({ context, actions }: AppHeaderProps) {
   return (
-    <header className="bg-card/90 shadow-header supports-[backdrop-filter]:bg-card/75 sticky top-0 z-30 backdrop-blur">
+    <header
+      data-print="hide"
+      className="bg-card/90 shadow-header supports-[backdrop-filter]:bg-card/75 sticky top-0 z-30 backdrop-blur"
+    >
       <div className="mx-auto flex h-14 max-w-[1440px] items-center gap-3 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"

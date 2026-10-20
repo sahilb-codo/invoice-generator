@@ -36,12 +36,15 @@ Only results from commands that were actually run are recorded here.
 | 2026-10-20 | 04    | `npm test`                                               | ✅ 3 files, 44/44 tests                                       |
 | 2026-10-20 | 04    | `npm run e2e` (editor, calculations, custom fields)      | ✅ 26/26, 23/23, 19/19                                        |
 | 2026-10-20 | 04    | `npm run typecheck` / `lint` / `build`                   | ✅                                                            |
+| 2026-10-20 | 05    | `npm run e2e:print` (incl. Chrome `printToPDF`)          | ✅ 19/19 — A4, demo 1 page, 40 lines 3 pages                  |
+| 2026-10-20 | 05    | `npm run e2e` (all suites)                               | ✅ 26/26, 23/23, 19/19, 19/19                                 |
+| 2026-10-20 | 05    | `npm test` / `typecheck` / `lint` / `build`              | ✅ 44/44                                                      |
 
 ## Browser (e2e) checks
 
 `scripts/e2e/` drives headless Chrome through the DevTools Protocol (Node 22 built-in WebSocket,
 no extra dependencies). Start the app (`npm run build && npm start`), then run
-`npm run e2e` (or `e2e:editor` / `e2e:calculations` / `e2e:custom-fields`). Set `CHROME_PATH` if Chrome/Edge is not in a standard location and `OUT=<dir>`
+`npm run e2e` (or `e2e:editor` / `e2e:calculations` / `e2e:custom-fields` / `e2e:print`). Set `CHROME_PATH` if Chrome/Edge is not in a standard location and `OUT=<dir>`
 to save screenshots.
 
 ## Unit tests

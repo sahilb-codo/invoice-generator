@@ -1,0 +1,102 @@
+/*
+ * Print stylesheet — "Print / Save as PDF" uses the browser's native print dialog.
+ * Only the invoice document is printed; all app chrome is removed.
+ *
+ * Hooks used by components:
+ *   [data-print="hide"]     app chrome: header, tabs, editor, toasts
+ *   [data-print="flow"]     page wrappers (flex on screen) → plain block flow
+ *   [data-print="root"]     workspace grid → plain block flow
+ *   [data-print="region"]   the preview panel → always shown, never sticky or scrolling
+ *   .invoice-document       the invoice itself (see invoice-preview.tsx)
+ */
+
+@page {
+  size: A4;
+  margin: 14mm 14mm 16mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  [data-print="hide"],
+  [data-sonner-toaster],
+  nextjs-portal {
+    display: none !important;
+  }
+
+  /*
+   * Every ancestor of the invoice must be a plain block: Chrome ignores break-inside: avoid
+   * inside flex/grid items, which split the totals across pages.
+   */
+  body,
+  [data-print="flow"],
+  [data-print="root"] {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Shown even when the mobile "Editor" tab is active. */
+  [data-print="region"] {
+    display: block !important;
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .invoice-document {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: #0b1530;
+  }
+
+  /* Keep brand colour bands and the total highlight when printing backgrounds is off. */
+  .invoice-document,
+  .invoice-document * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .invoice-document .invoice-body {
+    padding: 8mm 0 0 !important;
+  }
+
+  /* Multi-page invoices: repeat the table header, never split a row, keep totals together. */
+  .invoice-document thead {
+    display: table-header-group;
+  }
+
+  .invoice-document tr,
+  .invoice-document .invoice-meta,
+  .invoice-document .invoice-totals,
+  .invoice-document .invoice-footer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Totals move to the next page as a whole rather than splitting. Do not add
+   * `break-before: avoid` here: combined with break-inside it leaves Chrome no legal break
+   * point, and it then splits the totals instead.
+   */
+  .invoice-document .invoice-totals {
+    display: block !important;
+  }
+
+  .invoice-document .invoice-totals > dl {
+    margin-left: auto;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

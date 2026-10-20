@@ -1,6 +1,6 @@
 # Phase 04 — Custom Fields
 
-**Status:** Complete. Awaiting the developer's commit.
+**Status:** Complete. Committed as `db67053`.
 
 Prompt: [04-custom-fields.md](../prompts/04-custom-fields.md)
 
@@ -83,7 +83,7 @@ Screenshots: [desktop](../screenshots/phase-04-custom-fields.png),
 ## Git commit
 
 - Suggested message: `feat: add customizable invoice fields`
-- Hash: _to be recorded at the start of Phase 05_
+- Hash: `db67053`
 
 ## Next phase
 

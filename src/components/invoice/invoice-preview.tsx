@@ -25,9 +25,9 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
     >
       <div className="bg-primary h-1.5" aria-hidden />
 
-      <div className="space-y-8 p-6 sm:p-9">
+      <div className="invoice-body space-y-8 p-6 sm:p-9">
         {/* Header */}
-        <header className="flex flex-col-reverse gap-6 sm:flex-row sm:items-start sm:justify-between">
+        <header className="flex flex-col-reverse gap-6 sm:flex-row sm:items-start sm:justify-between print:flex-row print:items-start print:justify-between">
           <div className="min-w-0 space-y-3">
             {business.logoDataUrl ? (
               // eslint-disable-next-line @next/next/no-img-element -- user-supplied data URL
@@ -54,7 +54,7 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
             </div>
           </div>
 
-          <div className="sm:text-right">
+          <div className="sm:text-right print:text-right">
             <p className="text-primary text-[11px] font-semibold tracking-[0.18em] uppercase">
               Invoice
             </p>
@@ -65,7 +65,7 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
         </header>
 
         {/* Parties and metadata */}
-        <section className="grid gap-6 sm:grid-cols-[1.2fr_1fr]">
+        <section className="invoice-meta grid gap-6 sm:grid-cols-[1.2fr_1fr] print:grid-cols-[1.2fr_1fr]">
           <div>
             <SectionLabel>Bill to</SectionLabel>
             <p className="font-semibold">{customer.name || "Customer name"}</p>
@@ -93,16 +93,22 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
                 <th scope="col" className="py-2 pr-3 text-left font-semibold">
                   Description
                 </th>
-                <th scope="col" className="w-12 px-2 py-2 text-right font-semibold sm:w-16">
+                <th
+                  scope="col"
+                  className="w-12 px-2 py-2 text-right font-semibold sm:w-16 print:w-16"
+                >
                   Qty
                 </th>
                 <th
                   scope="col"
-                  className="hidden w-24 px-2 py-2 text-right font-semibold sm:table-cell"
+                  className="hidden w-24 px-2 py-2 text-right font-semibold sm:table-cell print:table-cell"
                 >
                   Unit price
                 </th>
-                <th scope="col" className="w-24 py-2 pl-2 text-right font-semibold sm:w-28">
+                <th
+                  scope="col"
+                  className="w-24 py-2 pl-2 text-right font-semibold sm:w-28 print:w-28"
+                >
                   Amount
                 </th>
               </tr>
@@ -121,14 +127,14 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
                       {item.description || (
                         <span className="text-muted-foreground">Untitled item</span>
                       )}
-                      <span className="text-muted-foreground block sm:hidden">
+                      <span className="text-muted-foreground block sm:hidden print:hidden">
                         {formatCents(toCents(item.unitPrice))} each
                       </span>
                     </td>
                     <td className="numeric px-2 py-2.5 text-right">
                       {formatQuantity(item.quantity)}
                     </td>
-                    <td className="numeric hidden px-2 py-2.5 text-right sm:table-cell">
+                    <td className="numeric hidden px-2 py-2.5 text-right sm:table-cell print:table-cell">
                       {formatCents(toCents(item.unitPrice))}
                     </td>
                     <td className="numeric py-2.5 pl-2 text-right font-medium">
@@ -170,7 +176,7 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
 
         {/* Footer */}
         {invoice.notes || invoice.paymentInstructions ? (
-          <footer className="invoice-footer grid gap-5 border-t pt-6 sm:grid-cols-2">
+          <footer className="invoice-footer grid gap-5 border-t pt-6 sm:grid-cols-2 print:grid-cols-2">
             {invoice.paymentInstructions ? (
               <div>
                 <SectionLabel>Payment instructions</SectionLabel>

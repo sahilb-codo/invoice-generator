@@ -11,7 +11,8 @@ Budget: 3 hours.
 | 03 Calculations      | 16:52 | 16:58 | ~6 min   | Schema, 39 unit tests, discount & tax UI, e2e        |
 | Scope change (06/07) | 17:00 | 17:04 | ~4 min   | Remove Prisma/SQLite, Saved status, update docs      |
 | 04 Custom fields     | 17:06 | 17:10 | ~4 min   | Section, helper + tests, e2e, mobile fix             |
+| 05 Print / PDF       | 17:11 | 17:19 | ~8 min   | Print stylesheet, button, PDF checks, page-break fix |
 
-**Running total:** ~46 min
+**Running total:** ~54 min
 
 Developer review / commit time between phases is not included unless noted.

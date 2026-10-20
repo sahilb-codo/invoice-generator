@@ -49,7 +49,8 @@ commit order:
 | 02    | `d2912c8` | `feat: build invoice editor and live preview`                 |
 | 03    | `a67e8f1` | `feat: implement precise invoice calculations`                |
 | 06/07 | `7bd136d` | `chore: remove database layer and descope invoice management` |
-| 04    | _pending_ | `feat: add customizable invoice fields`                       |
+| 04    | `db67053` | `feat: add customizable invoice fields`                       |
+| 05    | _pending_ | `feat: implement invoice print layout`                        |
 
 ## Pushing
 

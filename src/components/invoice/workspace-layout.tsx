@@ -22,6 +22,7 @@ export function WorkspaceLayout({ editor, preview }: WorkspaceLayoutProps) {
 
   return (
     <Tabs
+      data-print="root"
       value={tab}
       onValueChange={(value) => {
         setTab(value);
@@ -30,7 +31,10 @@ export function WorkspaceLayout({ editor, preview }: WorkspaceLayoutProps) {
       }}
       className="mx-auto w-full max-w-[1440px] gap-0 lg:grid lg:grid-cols-[minmax(0,11fr)_minmax(0,9fr)] lg:items-start lg:gap-8 lg:px-8 lg:py-8"
     >
-      <div className="bg-background/95 sticky top-14 z-20 border-b px-4 py-2.5 backdrop-blur sm:px-6 lg:hidden">
+      <div
+        data-print="hide"
+        className="bg-background/95 sticky top-14 z-20 border-b px-4 py-2.5 backdrop-blur sm:px-6 lg:hidden"
+      >
         <TabsList className="h-9! w-full">
           <TabsTrigger value="editor">
             <PencilLine aria-hidden />
@@ -46,6 +50,7 @@ export function WorkspaceLayout({ editor, preview }: WorkspaceLayoutProps) {
       <TabsContent
         value="editor"
         forceMount
+        data-print="hide"
         aria-label="Invoice editor"
         className="px-4 py-5 data-[state=inactive]:hidden sm:px-6 lg:p-0 lg:data-[state=inactive]:block"
       >
@@ -55,6 +60,7 @@ export function WorkspaceLayout({ editor, preview }: WorkspaceLayoutProps) {
       <TabsContent
         value="preview"
         forceMount
+        data-print="region"
         aria-label="Invoice preview"
         className="px-4 py-5 data-[state=inactive]:hidden sm:px-6 lg:sticky lg:top-22 lg:max-h-[calc(100dvh-7rem)] lg:overflow-y-auto lg:p-0 lg:pb-2 lg:data-[state=inactive]:block"
       >

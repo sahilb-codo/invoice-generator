@@ -6,7 +6,9 @@ Updated as phases are completed. Current state (after Phase 03 and the scope cha
   developer. Edits live only in the open tab; refreshing resets to the demo invoice. The brief's
   "persistent backend storage", "retrieval after reload" and "invoice list and management"
   requirements are therefore not implemented.
-- Print and email are not implemented yet (Phases 05, 08).
+- Email is not implemented yet (Phase 08).
+- Print layout was verified automatically in Chrome only; browser print headers/footers depend on
+  the user's print-dialog settings.
 - `npm audit` reports high-severity advisories in transitive dependencies of the scaffold
   (to be reviewed in Phase 09; `npm audit fix --force` not applied because it makes breaking
   upgrades).
