@@ -29,3 +29,10 @@ export function formatDate(isoDate: string): string {
 export function formatPercent(value: number): string {
   return `${Number.isFinite(value) ? Number(value.toFixed(3)) : 0}%`;
 }
+
+const quantityFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 });
+
+/** Formats a quantity; shows "—" while the field is empty or invalid. */
+export function formatQuantity(value: number): string {
+  return Number.isFinite(value) ? quantityFormatter.format(value) : "—";
+}

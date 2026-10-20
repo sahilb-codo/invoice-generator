@@ -1,6 +1,6 @@
 # Phase 01 — Premium Design System
 
-**Status:** Complete. Awaiting the developer's commit.
+**Status:** Complete. Committed as `321a59c`.
 
 Prompt: [01-design-system.md](../prompts/01-design-system.md)
 
@@ -92,7 +92,7 @@ Phase 02 — wire the editor (React Hook Form + Zod), live preview, line items, 
 ## Git commit
 
 - Suggested message: `feat: establish premium invoice design system`
-- Hash: _to be recorded at the start of Phase 02_
+- Hash: `321a59c`
 
 ## Next phase
 

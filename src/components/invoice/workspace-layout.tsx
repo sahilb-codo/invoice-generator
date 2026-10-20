@@ -23,7 +23,11 @@ export function WorkspaceLayout({ editor, preview }: WorkspaceLayoutProps) {
   return (
     <Tabs
       value={tab}
-      onValueChange={setTab}
+      onValueChange={(value) => {
+        setTab(value);
+        // Start each tab at the top instead of mid-way down the previous tab's scroll position.
+        window.scrollTo({ top: 0 });
+      }}
       className="mx-auto w-full max-w-[1440px] gap-0 lg:grid lg:grid-cols-[minmax(0,11fr)_minmax(0,9fr)] lg:items-start lg:gap-8 lg:px-8 lg:py-8"
     >
       <div className="bg-background/95 sticky top-14 z-20 border-b px-4 py-2.5 backdrop-blur sm:px-6 lg:hidden">

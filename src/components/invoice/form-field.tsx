@@ -23,7 +23,7 @@ export function FormField({
   children,
 }: FormFieldProps) {
   return (
-    <div className={cn("grid gap-1.5", className)}>
+    <div className={cn("grid content-start gap-1.5", className)}>
       <Label htmlFor={id} className="text-foreground/80 text-xs font-medium">
         {label}
         {optional ? <span className="text-muted-foreground font-normal">(optional)</span> : null}

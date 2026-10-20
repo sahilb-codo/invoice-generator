@@ -1,5 +1,5 @@
 import { toCents, type InvoiceTotals } from "@/lib/invoice/calculations";
-import { formatCents, formatDate, formatPercent } from "@/lib/invoice/format";
+import { formatCents, formatDate, formatPercent, formatQuantity } from "@/lib/invoice/format";
 import type { InvoiceData } from "@/lib/invoice/types";
 import { cn } from "@/lib/utils";
 
@@ -126,7 +126,9 @@ export function InvoicePreview({ invoice, totals, className }: InvoicePreviewPro
                         {formatCents(toCents(item.unitPrice))} each
                       </span>
                     </td>
-                    <td className="numeric px-2 py-2.5 text-right">{item.quantity}</td>
+                    <td className="numeric px-2 py-2.5 text-right">
+                      {formatQuantity(item.quantity)}
+                    </td>
                     <td className="numeric hidden px-2 py-2.5 text-right sm:table-cell">
                       {formatCents(toCents(item.unitPrice))}
                     </td>
