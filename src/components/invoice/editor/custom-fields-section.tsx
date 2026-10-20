@@ -44,6 +44,7 @@ export function CustomFieldsSection() {
 
   return (
     <FormSection
+      id="section-fields"
       icon={Tags}
       title="Custom fields"
       description="Extra details such as a PO number. Hidden fields are kept but never printed."
@@ -61,7 +62,7 @@ export function CustomFieldsSection() {
       }
     >
       {fields.length === 0 ? (
-        <p className="text-muted-foreground rounded-lg border border-dashed px-4 py-6 text-center text-sm">
+        <p className="text-muted-foreground rounded-xl border border-dashed px-4 py-6 text-center text-sm">
           No custom fields. Add one, or start from a suggestion below.
         </p>
       ) : (
@@ -74,10 +75,10 @@ export function CustomFieldsSection() {
             const valueError = get(errors, `customFields.${index}.value`)?.message as
               string | undefined;
             const ids = {
-              label: `cf-${field.key}-label`,
-              value: `cf-${field.key}-value`,
-              toggle: `cf-${field.key}-visible`,
-              error: `cf-${field.key}-error`,
+              label: `cf-${field.id}-label`,
+              value: `cf-${field.id}-value`,
+              toggle: `cf-${field.id}-visible`,
+              error: `cf-${field.id}-error`,
             };
 
             return (
@@ -85,8 +86,8 @@ export function CustomFieldsSection() {
                 key={field.key}
                 data-visible={visible}
                 className={cn(
-                  "grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 gap-y-2 rounded-lg border p-3 transition-colors sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_auto] sm:items-end",
-                  !visible && "bg-muted/40 border-dashed",
+                  "bg-muted/25 grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 gap-y-2 rounded-xl border p-3 transition-colors sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_auto] sm:items-end",
+                  !visible && "bg-muted/60 border-dashed",
                 )}
               >
                 <div className="col-span-2 sm:col-span-1">

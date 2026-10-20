@@ -30,6 +30,7 @@ export function AdjustmentsSection() {
 
   return (
     <FormSection
+      id="section-tax"
       icon={Percent}
       title="Discount & tax"
       description="Discount is applied first; tax is charged on the discounted amount."
@@ -73,23 +74,25 @@ export function AdjustmentsSection() {
 
         <dl
           aria-label="Totals breakdown"
-          className="bg-muted/50 numeric grid content-start gap-1.5 rounded-lg border p-4 text-sm"
+          className="bg-accent/40 border-primary/15 numeric grid content-start gap-1.5 rounded-xl border p-4 text-sm"
         >
           <BreakdownRow label="Subtotal" value={formatCents(totals.subtotalCents)} />
           <BreakdownRow
             label={
               discountType === "PERCENT" ? `Discount (${formatPercent(discountValue)})` : "Discount"
             }
-            value={`−${formatCents(totals.discountCents)}`}
+            value={
+              totals.discountCents > 0 ? `−${formatCents(totals.discountCents)}` : formatCents(0)
+            }
           />
           <BreakdownRow label="Taxable amount" value={formatCents(totals.taxableCents)} />
           <BreakdownRow
             label={`Tax (${formatPercent(taxRate)})`}
             value={formatCents(totals.taxCents)}
           />
-          <div className="mt-1.5 flex items-baseline justify-between border-t pt-2.5">
+          <div className="border-primary/15 mt-1.5 flex items-baseline justify-between border-t pt-2.5">
             <dt className="font-semibold">Total</dt>
-            <dd className="text-primary text-base font-semibold">
+            <dd className="text-primary text-lg font-semibold tracking-tight">
               {formatCents(totals.totalCents)}
             </dd>
           </div>

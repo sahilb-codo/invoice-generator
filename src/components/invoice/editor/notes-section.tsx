@@ -9,6 +9,7 @@ import { TextareaField } from "./fields";
 export function NotesSection() {
   return (
     <FormSection
+      id="section-notes"
       icon={NotebookPen}
       title="Notes & payment"
       description="Shown at the bottom of the invoice."

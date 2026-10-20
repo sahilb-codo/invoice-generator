@@ -3,12 +3,13 @@
 Updated as phases are completed. Current state (after Phase 03 and the scope change):
 
 - **No persistence (by decision).** The database and invoice list were removed from scope by the
-  developer. Edits live only in the open tab; refreshing resets to the demo invoice. The brief's
+  developer. Edits live only in the open tab; refreshing starts a new blank invoice (or the sample at `/?demo`). The brief's
   "persistent backend storage", "retrieval after reload" and "invoice list and management"
   requirements are therefore not implemented.
 - **Email (Resend):** verified against a local fake Resend API; real delivery needs
-  `RESEND_API_KEY` / `EMAIL_FROM` in `.env` and has not been tested yet. No PDF attachment (the
-  email contains the full summary; PDF via Print). Status stays Sent after later edits. The send
+  `RESEND_API_KEY` / `EMAIL_FROM` in `.env` and has not been tested yet. The PDF attachment is
+  rendered separately from the print view (react-pdf) and uses Helvetica, so it looks slightly
+  different from the browser print. Status stays Sent after later edits. The send
   action has no authentication and an in-memory per-process rate limit (5/min).
 - With the `onboarding@resend.dev` test sender, Resend only delivers to the Resend account
   owner's address; customers need a verified domain.

@@ -18,7 +18,9 @@ type EmailStatus =
 ## `sendInvoiceEmail(input: { recipient: string; invoice: InvoiceData }): Promise<SendInvoiceResult>`
 
 Order of checks: recipient (Zod email) → invoice (`parseInvoice`, same schema as the editor) →
-configuration → rate limit (5 per minute per process) → send through Resend.
+configuration → rate limit (5 per minute per process) → render the invoice PDF
+(`@react-pdf/renderer`) → send through Resend with the PDF attached (`Invoice-<number>.pdf`). If
+the PDF fails, nothing is sent.
 
 ```ts
 type SendInvoiceResult =

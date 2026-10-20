@@ -22,6 +22,10 @@ export function LineItemsSection() {
   // keyName "key": our items already have their own `id` that must not be overwritten.
   const { fields, append, remove } = useFieldArray({ control, name: "lineItems", keyName: "key" });
   const items = useWatch({ control, name: "lineItems" });
+  const subtotalCents = (items ?? []).reduce(
+    (sum, item) => sum + lineTotalCents(item.quantity, item.unitPrice),
+    0,
+  );
   const listError: string | undefined =
     errors.lineItems?.root?.message ?? errors.lineItems?.message;
 
@@ -34,6 +38,7 @@ export function LineItemsSection() {
 
   return (
     <FormSection
+      id="section-items"
       icon={ListOrdered}
       title="Line items"
       description="Products and services on this invoice."
@@ -46,14 +51,14 @@ export function LineItemsSection() {
     >
       <div className="@container">
         {fields.length === 0 ? (
-          <div className="text-muted-foreground rounded-lg border border-dashed px-4 py-8 text-center text-sm">
+          <div className="text-muted-foreground rounded-xl border border-dashed px-4 py-8 text-center text-sm">
             No line items yet. Add the first product or service.
           </div>
         ) : (
           <>
             {/* Column labels (wide containers only) */}
             <div
-              className="text-muted-foreground hidden grid-cols-[minmax(0,1fr)_5.5rem_7.5rem_6.5rem_2.25rem] gap-3 px-1 pb-2 text-xs font-medium @xl:grid"
+              className="bg-muted/70 text-muted-foreground mb-1.5 hidden grid-cols-[minmax(0,1fr)_5.5rem_7.5rem_6.5rem_2.25rem] gap-3 rounded-lg px-2 py-2 text-[11px] font-semibold tracking-wider uppercase @xl:grid"
               aria-hidden
             >
               <span>Description</span>
@@ -63,16 +68,16 @@ export function LineItemsSection() {
               <span />
             </div>
 
-            <ol className="space-y-3 @xl:space-y-2">
+            <ol className="space-y-3 @xl:space-y-0">
               {fields.map((field, index) => {
                 const item = items?.[index];
                 const amount = item ? lineTotalCents(item.quantity, item.unitPrice) : 0;
                 const label = `Line ${index + 1}`;
                 const ids = {
-                  description: `li-${field.key}-desc`,
-                  quantity: `li-${field.key}-qty`,
-                  unitPrice: `li-${field.key}-price`,
-                  error: `li-${field.key}-error`,
+                  description: `li-${field.id}-desc`,
+                  quantity: `li-${field.id}-qty`,
+                  unitPrice: `li-${field.id}-price`,
+                  error: `li-${field.id}-error`,
                 };
                 const rowErrors = LINE_FIELDS.map(
                   (name) =>
@@ -86,7 +91,7 @@ export function LineItemsSection() {
                 return (
                   <li
                     key={field.key}
-                    className="grid grid-cols-[repeat(3,minmax(0,1fr))_auto] items-end gap-2 rounded-lg border p-3 @xl:grid-cols-[minmax(0,1fr)_5.5rem_7.5rem_6.5rem_2.25rem] @xl:gap-3 @xl:border-0 @xl:p-1"
+                    className="bg-muted/25 @xl:hover:bg-muted/30 grid grid-cols-[repeat(3,minmax(0,1fr))_auto] items-end gap-2 rounded-xl border p-3 transition-colors @xl:grid-cols-[minmax(0,1fr)_5.5rem_7.5rem_6.5rem_2.25rem] @xl:gap-3 @xl:rounded-none @xl:border-x-0 @xl:border-t-0 @xl:bg-transparent @xl:px-2 @xl:py-2 @xl:last:border-b-0"
                   >
                     <div className="col-span-3 @xl:col-span-1">
                       <label htmlFor={ids.description} className="sr-only">
@@ -186,6 +191,18 @@ export function LineItemsSection() {
                 );
               })}
             </ol>
+
+            <div className="bg-accent/60 mt-3 flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm">
+              <span className="text-muted-foreground">
+                {fields.length} {fields.length === 1 ? "item" : "items"}
+              </span>
+              <span className="numeric">
+                <span className="text-muted-foreground mr-2">Subtotal</span>
+                <span className="text-accent-foreground font-semibold">
+                  {formatCents(subtotalCents)}
+                </span>
+              </span>
+            </div>
           </>
         )}
         {listError ? (

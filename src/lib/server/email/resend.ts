@@ -14,7 +14,14 @@ export type SendEmailResult =
  */
 export async function sendWithResend(
   config: EmailConfig,
-  message: { to: string; subject: string; html: string; text: string; replyTo?: string },
+  message: {
+    to: string;
+    subject: string;
+    html: string;
+    text: string;
+    replyTo?: string;
+    attachments?: { filename: string; content: Buffer }[];
+  },
 ): Promise<SendEmailResult> {
   const resend = new Resend(
     config.apiKey,
@@ -27,6 +34,7 @@ export async function sendWithResend(
     html: message.html,
     text: message.text,
     replyTo: message.replyTo,
+    attachments: message.attachments,
   });
 
   if (error || !data?.id) {

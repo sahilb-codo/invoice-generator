@@ -17,7 +17,7 @@ const toggle = (label) => page.click(`button[aria-label="Show ${label} on invoic
 const TOTAL = "$8,091.39";
 
 await page.viewport(1440, 1000);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 
 let t = await previewText();
@@ -104,7 +104,7 @@ if (OUT) {
 }
 
 await page.viewport(390, 844, true);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 await page.clickText("button", "Add field");
 const sw = await page.eval(`document.documentElement.scrollWidth`);

@@ -32,6 +32,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-paper: var(--paper);
+  --color-desk: var(--desk);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
   --color-warning: var(--warning);
@@ -46,7 +47,8 @@
 }
 
 @theme {
-  --shadow-card: 0 1px 2px 0 oklch(0.24 0.05 266 / 0.04), 0 1px 3px 0 oklch(0.24 0.05 266 / 0.05);
+  --shadow-card:
+    0 1px 2px 0 oklch(0.24 0.05 266 / 0.05), 0 6px 16px -8px oklch(0.24 0.05 266 / 0.1);
   --shadow-paper:
     0 1px 2px 0 oklch(0.24 0.05 266 / 0.05), 0 12px 32px -12px oklch(0.24 0.05 266 / 0.14);
   --shadow-header: 0 1px 0 0 oklch(0.24 0.05 266 / 0.06);
@@ -56,10 +58,11 @@
   --radius: 0.625rem;
 
   /* Surfaces */
-  --background: oklch(0.982 0.004 264); /* soft neutral canvas */
+  --background: oklch(0.968 0.007 264); /* cool grey canvas — white cards stand out on it */
   --card: oklch(1 0 0);
   --popover: oklch(1 0 0);
   --paper: oklch(1 0 0); /* invoice document */
+  --desk: oklch(0.935 0.012 266); /* surface the preview paper sits on */
 
   /* Text — deep navy */
   --foreground: oklch(0.24 0.05 266);
@@ -95,6 +98,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* A faint brand-tinted wash at the top of the canvas; print.css resets it to white. */
+    background-image: radial-gradient(
+      70rem 26rem at 50% -8rem,
+      oklch(0.51 0.2 276 / 0.09),
+      transparent 70%
+    );
+    background-repeat: no-repeat;
     font-feature-settings: "cv11", "ss01";
   }
   html {

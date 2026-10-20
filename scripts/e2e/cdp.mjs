@@ -82,10 +82,29 @@ export async function launch({ port = 9333 } = {}) {
     errors,
     sleep,
     listeners,
-    async goto(url) {
-      await send("Page.navigate", { url });
-      await sleep(300);
+    /**
+     * Navigates, waits for the new document's load event (not the old one's readyState), then
+     * for the invoice form to be live: inputs are empty in the server HTML and React Hook Form
+     * fills them only after hydration, so a filled #invoiceNumber means the form is interactive.
+     */
+    async goto(url, timeout = 20000) {
+      let onLoad;
+      const loaded = new Promise((resolve) => {
+        onLoad = (m) => m.method === "Page.loadEventFired" && resolve();
+        listeners.push(onLoad);
+      });
+      try {
+        await send("Page.navigate", { url });
+        const timedOut = await Promise.race([
+          loaded.then(() => false),
+          sleep(timeout).then(() => true),
+        ]);
+        if (timedOut) throw new Error(`Timeout loading ${url}`);
+      } finally {
+        listeners.splice(listeners.indexOf(onLoad), 1);
+      }
       await page.waitFor("document.readyState === 'complete'");
+      await page.waitFor("!!document.getElementById('invoiceNumber')?.value", timeout);
     },
     async eval(expr) {
       const r = await send("Runtime.evaluate", {

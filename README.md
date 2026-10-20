@@ -13,7 +13,8 @@ was descoped by the developer — see [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OV
 - Line items, fixed or % discount, tax — integer-cent engine, $99.00 example verified
 - Custom fields with show / hide (hidden fields never printed or emailed)
 - Print / Save as PDF (A4 print stylesheet, multi-page safe) — [sample PDF](docs/samples/invoice-sample.pdf)
-- Email via Resend from a Server Action (validated, server-recalculated, rate-limited)
+- Email via Resend from a Server Action (validated, server-recalculated, rate-limited) with the
+  invoice **PDF attached**
 
 ![Desktop](docs/screenshots/phase-04-custom-fields.png)
 
@@ -30,6 +31,9 @@ npm install
 cp .env.example .env      # adjust values; never commit .env
 npm run dev               # http://localhost:3000
 ```
+
+The app opens a blank invoice (generated number, today's date, due in 30 days). Open
+`http://localhost:3000/?demo` for a filled-in sample invoice.
 
 Requires Node.js ≥ 20.19. Full details: [docs/ENVIRONMENT_SETUP.md](docs/ENVIRONMENT_SETUP.md).
 

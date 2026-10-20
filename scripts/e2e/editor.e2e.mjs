@@ -29,9 +29,55 @@ const preview = `document.querySelector('[aria-label="Invoice preview"] article'
 const previewText = () => page.eval(`${preview}?.innerText ?? ''`);
 
 await page.viewport(1440, 1000);
+
+// The default page is a blank invoice for the user to fill in.
 await page.goto(BASE);
 await page.waitFor(`!!${preview}`);
+const blank = await page.eval(`(() => {
+  const value = (id) => document.getElementById(id)?.value;
+  const fields = ["business-name", "business-email", "business-address", "customer-name", "customer-email", "customer-address", "paymentInstructions", "notes"];
+  return {
+    filled: fields.filter((id) => value(id) !== ""),
+    number: value("invoiceNumber"),
+    issue: value("issueDate"),
+    due: value("dueDate"),
+    rows: document.querySelectorAll('[aria-label="Invoice editor"] ol > li').length,
+    description: document.querySelector('[aria-label="Invoice editor"] ol > li input')?.value,
+    customFields: document.querySelectorAll('[id^="cf-"][id$="-label"]').length,
+  };
+})()`);
+check(
+  "default page: business, customer and notes are empty",
+  blank.filled.length === 0,
+  blank.filled.join(", "),
+);
+check(
+  "default page: invoice number generated",
+  /^INV-\d{8}-[A-Z2-9]{4}$/.test(blank.number),
+  blank.number,
+);
+check(
+  "default page: issue date today, due date set",
+  /^\d{4}-\d{2}-\d{2}$/.test(blank.issue) && blank.due > blank.issue,
+  `${blank.issue} → ${blank.due}`,
+);
+check(
+  "default page: one empty line item, no custom fields",
+  blank.rows === 1 && blank.description === "" && blank.customFields === 0,
+);
+check("default page: no sample data in preview", !(await previewText()).includes("Northwind"));
+
+await page.goto(`${BASE}/?demo`);
+await page.waitFor(`!!${preview}`);
 check("workspace renders with demo invoice", (await previewText()).includes("Northwind Studio"));
+const duplicateIds = await page.eval(
+  `(() => { const seen = new Set(), dup = []; for (const el of document.querySelectorAll('[id]')) { if (seen.has(el.id)) dup.push(el.id); seen.add(el.id); } return dup; })()`,
+);
+check("no duplicate element ids", duplicateIds.length === 0, duplicateIds.join(", "));
+const sections = await page.eval(
+  `[...document.querySelectorAll('nav[aria-label="Invoice sections"] a')].map(a => !!document.querySelector(a.getAttribute('href')))`,
+);
+check("section nav links all resolve", sections.length === 6 && sections.every(Boolean));
 
 await page.fill("#business-name", "Acme Consulting LLC");
 check("business name updates preview", (await previewText()).includes("Acme Consulting LLC"));
@@ -156,14 +202,14 @@ check(
 await page.clickText("button", "Add item");
 
 if (OUT) {
-  await page.goto(BASE);
+  await page.goto(`${BASE}/?demo`);
   await page.waitFor(`!!${preview}`);
   await page.screenshot(OUT + "/p02-desktop.png");
 }
 
 // Mobile
 await page.viewport(390, 844, true);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 const sw = await page.eval(`document.documentElement.scrollWidth`);
 check("mobile: no horizontal overflow", sw <= 390, `scrollWidth=${sw}`);

@@ -21,6 +21,7 @@ export function InvoiceDetailsSection() {
 
   return (
     <FormSection
+      id="section-details"
       icon={FileText}
       title="Invoice details"
       description="Number, dates and payment terms."

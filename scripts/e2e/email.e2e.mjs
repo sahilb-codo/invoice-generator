@@ -69,7 +69,7 @@ try {
   await page.viewport(1440, 1000);
 
   // 1. Successful send
-  await page.goto("http://localhost:3125");
+  await page.goto("http://localhost:3125/?demo");
   await page.waitFor(`!!${preview}`);
   check("status starts as Draft", (await headerStatus()).includes("Draft"));
   await openDialog();
@@ -110,13 +110,19 @@ try {
       fake.sent[0].body.html.includes("$8,091.39") &&
       !fake.sent[0].body.html.includes("CC-4410"),
   );
+  check(
+    "PDF attached",
+    fake.sent[0]?.body.attachments?.[0]?.filename === "Invoice-INV-2026-0042.pdf" &&
+      Buffer.from(fake.sent[0].body.attachments[0].content, "base64").subarray(0, 5).toString() ===
+        "%PDF-",
+  );
   if (OUT) {
     await page.screenshot(`${OUT}/p08-sent.png`);
     writeFileSync(`${OUT}/p08-email.html`, fake.sent[0].body.html);
   }
 
   // 2. Invalid recipient
-  await page.goto("http://localhost:3125");
+  await page.goto("http://localhost:3125/?demo");
   await page.waitFor(`!!${preview}`);
   await openDialog();
   await page.fill("#send-recipient", "not-an-email");
@@ -146,7 +152,7 @@ try {
   );
 
   // 4. Invalid invoice is not sent
-  await page.goto("http://localhost:3125");
+  await page.goto("http://localhost:3125/?demo");
   await page.waitFor(`!!${preview}`);
   const qty = await page.eval(`'#' + document.querySelector('input[id$="-qty"]').id`);
   await page.fill(qty, "0");
@@ -160,7 +166,7 @@ try {
   check("invalid invoice: nothing sent", fake.sent.length === 1);
 
   // 5. Resend not configured
-  await page.goto("http://localhost:3126");
+  await page.goto("http://localhost:3126/?demo");
   await page.waitFor(`!!${preview}`);
   await openDialog();
   text = await dialogText();

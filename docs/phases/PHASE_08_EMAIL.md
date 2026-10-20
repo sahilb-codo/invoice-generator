@@ -139,6 +139,25 @@ and send to an address you control.
 - Rate limit is per server process (not shared across instances).
 - The send endpoint has no authentication; the rate limit only slows abuse.
 
+## Addition after Phase 10: PDF attachment
+
+Requested by the developer after the final review ("Can you also attach the PDF into the mail as
+well?").
+
+- `src/lib/server/email/invoice-pdf.tsx` renders the invoice on the server with
+  `@react-pdf/renderer` 4.9.0 (no browser needed; on Next.js's built-in `serverExternalPackages`
+  list). Same validated data and server totals as the email; hidden custom fields excluded; A4;
+  table header repeats on new pages; page numbers; PNG/JPEG logos (SVG/WebP skipped).
+- The action attaches it as `Invoice-<number>.pdf`. If the PDF cannot be generated, **nothing is
+  sent** and the dialog shows "The invoice PDF could not be generated, so nothing was sent."
+- Built-in Helvetica (WinAnsi) font → discounts print as `-$250.00`.
+- Verified: `invoice-pdf.test.ts` (4 tests: one-page A4 demo, multi-page for 60 lines, SVG logo
+  skipped, safe file names); delivery test asserts one attachment named
+  `Invoice-INV-2026-0042.pdf` whose bytes start with `%PDF-`; `e2e:email` **23/23** incl.
+  "PDF attached"; `npm test` **70/70**; typecheck, lint, build ✅. The generated PDF was opened and
+  inspected: [docs/samples/invoice-email-attachment.pdf](../samples/invoice-email-attachment.pdf).
+- Suggested commit: `feat: attach invoice PDF to emails`
+
 ## Git commit
 
 - Suggested message: `feat: integrate Resend email delivery`

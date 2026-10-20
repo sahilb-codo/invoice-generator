@@ -5,6 +5,7 @@ import { z } from "zod";
 import { parseInvoice } from "@/lib/invoice/schema";
 import { readEmailConfig } from "@/lib/server/email/config";
 import { buildInvoiceEmail } from "@/lib/server/email/invoice-email";
+import { invoicePdfFilename, renderInvoicePdf } from "@/lib/server/email/invoice-pdf";
 import { sendWithResend } from "@/lib/server/email/resend";
 import { createRateLimiter } from "@/lib/server/rate-limit";
 
@@ -87,12 +88,29 @@ export async function sendInvoiceEmail(input: unknown): Promise<SendInvoiceResul
 
   const recipient = request.data.recipient;
   const content = buildInvoiceEmail(parsed.invoice, parsed.totals);
+
+  // The PDF is part of the invoice email: if it cannot be produced, nothing is sent.
+  let pdf: Buffer;
+  try {
+    pdf = await renderInvoicePdf(parsed.invoice, parsed.totals);
+  } catch (error) {
+    console.error("[sendInvoiceEmail] PDF generation failed", {
+      message: (error as Error)?.message,
+    });
+    return {
+      ok: false,
+      code: "SEND_FAILED",
+      message: "The invoice PDF could not be generated, so nothing was sent.",
+    };
+  }
+
   const result = await sendWithResend(email.config, {
     to: recipient,
     subject: content.subject,
     html: content.html,
     text: content.text,
     replyTo: parsed.invoice.business.email || undefined,
+    attachments: [{ filename: invoicePdfFilename(parsed.invoice.invoiceNumber), content: pdf }],
   });
 
   if (!result.ok) {

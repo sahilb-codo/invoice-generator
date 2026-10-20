@@ -11,7 +11,7 @@ import { CustomFieldsSection } from "@/components/invoice/editor/custom-fields-s
 import { InvoiceDetailsSection } from "@/components/invoice/editor/invoice-details-section";
 import { LineItemsSection } from "@/components/invoice/editor/line-items-section";
 import { NotesSection } from "@/components/invoice/editor/notes-section";
-import { BusinessSection, CustomerSection } from "@/components/invoice/editor/party-sections";
+import { PartiesSection } from "@/components/invoice/editor/party-sections";
 import { InvoicePreview } from "@/components/invoice/invoice-preview";
 import { SendInvoiceButton } from "@/components/invoice/send-invoice-dialog";
 import { StatusBadge } from "@/components/invoice/status-badge";
@@ -50,12 +50,13 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
         <main data-print="flow" className="flex-1">
           <WorkspaceLayout
             editor={
-              <form noValidate onSubmit={(event) => event.preventDefault()} className="space-y-5">
+              <form
+                noValidate
+                onSubmit={(event) => event.preventDefault()}
+                className="space-y-5 lg:space-y-6"
+              >
                 <InvoiceDetailsSection />
-                <div className="grid gap-5 2xl:grid-cols-2">
-                  <BusinessSection />
-                  <CustomerSection />
-                </div>
+                <PartiesSection />
                 <LineItemsSection />
                 <AdjustmentsSection />
                 <CustomFieldsSection />

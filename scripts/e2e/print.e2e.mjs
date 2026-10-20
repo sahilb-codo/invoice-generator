@@ -30,7 +30,7 @@ async function printPdf(name) {
 }
 
 await page.viewport(1440, 1000);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 
 // 1. The button triggers window.print() (stubbed — headless Chrome has no print dialog).
@@ -99,7 +99,7 @@ await setMedia("");
 
 // 3. Mobile with the Editor tab active still prints the invoice.
 await page.viewport(390, 844, true);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 check(
   "mobile screen: preview hidden behind Editor tab",
@@ -115,7 +115,7 @@ await setMedia("");
 
 // 4. Long invoice spans multiple pages.
 await page.viewport(1440, 1000);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 for (let i = 0; i < 36; i++) await page.clickText("button", "Add item");
 const descIds = await page.eval(

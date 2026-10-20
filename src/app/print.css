@@ -6,7 +6,8 @@
  *   [data-print="hide"]     app chrome: header, tabs, editor, toasts
  *   [data-print="flow"]     page wrappers (flex on screen) → plain block flow
  *   [data-print="root"]     workspace grid → plain block flow
- *   [data-print="region"]   the preview panel → always shown, never sticky or scrolling
+ *   [data-print="region"]   the preview panel and its desk → always shown, never sticky or
+ *                           scrolling, no desk background
  *   .invoice-document       the invoice itself (see invoice-preview.tsx)
  */
 
@@ -50,6 +51,9 @@
     overflow: visible !important;
     padding: 0 !important;
     margin: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
   }
 
   .invoice-document {

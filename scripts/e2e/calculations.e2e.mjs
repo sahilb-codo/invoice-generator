@@ -15,7 +15,7 @@ const qtyIds = () =>
   page.eval(`[...document.querySelectorAll('input[id$="-qty"]')].map(e => '#' + e.id)`);
 
 await page.viewport(1440, 1000);
-await page.goto(BASE);
+await page.goto(`${BASE}/?demo`);
 await page.waitFor(`!!${preview}`);
 
 // Mandatory example: 2 × $50, $10 discount, 10% tax → $99.00

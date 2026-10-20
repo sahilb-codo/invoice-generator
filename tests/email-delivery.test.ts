@@ -67,6 +67,12 @@ describe("sendInvoiceEmail (Resend API)", () => {
     expect(body.html).toContain("$8,091.39");
     expect(body.text).toContain("Due date: Nov 19, 2026");
     expect(body.html).not.toContain("CC-4410"); // hidden custom field
+
+    // PDF attachment, generated on the server
+    expect(body.attachments).toHaveLength(1);
+    expect(body.attachments[0].filename).toBe("Invoice-INV-2026-0042.pdf");
+    const pdf = Buffer.from(body.attachments[0].content, "base64");
+    expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
   });
 
   it("recalculates totals on the server and ignores client-supplied totals", async () => {

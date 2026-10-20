@@ -10,7 +10,7 @@ Light theme only: invoices are business documents that print on white paper.
 - One accent colour (indigo), used for brand, primary actions, focus rings and the total.
 - Neutrals are slightly cool (hue ≈ 264) so they sit with the navy text instead of looking grey.
 - Restrained motion: colour/opacity transitions only; no decorative animation.
-- No gradients, no random colours, no oversized cards.
+- No loud gradients (only the faint canvas wash and the section-header tint), no random colours, no oversized cards.
 
 ## Colour tokens
 
@@ -47,11 +47,11 @@ All pairs meet AA (≥ 4.5:1) for normal-size text.
 
 ## Elevation
 
-| Token           | Use                                      |
-| --------------- | ---------------------------------------- |
-| `shadow-card`   | Editor section cards (barely-there lift) |
-| `shadow-paper`  | Invoice document (soft, deeper drop)     |
-| `shadow-header` | 1px hairline under the sticky header     |
+| Token           | Use                                  |
+| --------------- | ------------------------------------ |
+| `shadow-card`   | Editor section cards and section nav |
+| `shadow-paper`  | Invoice document (soft, deeper drop) |
+| `shadow-header` | 1px hairline under the sticky header |
 
 ## Typography
 
@@ -63,8 +63,8 @@ All pairs meet AA (≥ 4.5:1) for normal-size text.
 
 ## Spacing and shape
 
-- 4px grid (Tailwind spacing). Section padding 16px mobile / 20px desktop; 20px between sections.
-- Radius base `0.625rem` (10px); cards `rounded-xl`, inputs/buttons `rounded-lg`, badges pill.
+- 4px grid (Tailwind spacing). Section padding 16px mobile / 24px desktop; 20px / 24px between sections.
+- Radius base `0.625rem` (10px); cards `rounded-2xl`, inputs/buttons `rounded-lg`, badges pill.
 
 ## Layout
 
@@ -78,16 +78,17 @@ inactive tab is hidden with CSS, so form state is never duplicated.
 
 ## Components
 
-| Component            | File                                          | Notes                                                                                                       |
-| -------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `AppHeader`          | `src/components/app/app-header.tsx`           | Logo, context slot (invoice number + status), actions slot; sticky, translucent                             |
-| `Logo`               | `src/components/app/logo.tsx`                 | Indigo receipt mark + "InvoiceStudio" wordmark                                                              |
-| `WorkspaceLayout`    | `src/components/invoice/workspace-layout.tsx` | Responsive editor/preview shell                                                                             |
-| `FormSection`        | `src/components/invoice/form-section.tsx`     | Card with icon, title, description, optional header action                                                  |
-| `FormField`          | `src/components/invoice/form-field.tsx`       | Label, optional marker, hint / error with ids for `aria-describedby`                                        |
-| `StatusBadge`        | `src/components/invoice/status-badge.tsx`     | Draft (neutral), Sent (green) with icons — not colour alone                                                 |
-| `InvoicePreview`     | `src/components/invoice/invoice-preview.tsx`  | The business document; renders data only, no controls                                                       |
-| shadcn/ui primitives | `src/components/ui/*`                         | button, input, textarea, label, select, switch, tabs, badge, card, separator, tooltip, alert-dialog, sonner |
+| Component            | File                                           | Notes                                                                                                       |
+| -------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `AppHeader`          | `src/components/app/app-header.tsx`            | Logo, context slot (invoice number + status), actions slot; sticky, translucent                             |
+| `Logo`               | `src/components/app/logo.tsx`                  | Indigo receipt mark + "InvoiceStudio" wordmark                                                              |
+| `WorkspaceLayout`    | `src/components/invoice/workspace-layout.tsx`  | Responsive editor/preview shell                                                                             |
+| `FormSection`        | `src/components/invoice/form-section.tsx`      | Card with tinted header: step number, icon, title, description, optional header action                      |
+| `EditorNav`          | `src/components/invoice/editor/editor-nav.tsx` | Jump links to the 6 editor sections; highlights the current one                                             |
+| `FormField`          | `src/components/invoice/form-field.tsx`        | Label, optional marker, hint / error with ids for `aria-describedby`                                        |
+| `StatusBadge`        | `src/components/invoice/status-badge.tsx`      | Draft (neutral), Sent (green) with icons — not colour alone                                                 |
+| `InvoicePreview`     | `src/components/invoice/invoice-preview.tsx`   | The business document; renders data only, no controls                                                       |
+| shadcn/ui primitives | `src/components/ui/*`                          | button, input, textarea, label, select, switch, tabs, badge, card, separator, tooltip, alert-dialog, sonner |
 
 ## Accessibility
 
@@ -95,6 +96,44 @@ inactive tab is hidden with CSS, so form state is never duplicated.
 - Status communicated by icon + text, not colour alone.
 - Form fields use `<label for>`; errors are `role="alert"`.
 - Touch targets in the header are 36px (`size="lg"` buttons); tabs are 36px tall.
+
+## UI refresh (after Phase 10)
+
+Requested by the developer: sections were hard to tell apart (white cards on a near-white canvas,
+identical quiet headers). Changes:
+
+- **Canvas** `--background` darkened to `0.968 0.007 264` and given one faint indigo radial wash
+  at the top (the only gradient besides section headers; print resets the body to white).
+  Contrast on the new canvas: foreground 15.06:1, muted text 5.47:1 (AA); on the desk, muted
+  text is 4.96:1 (the desk shows no text besides the paper).
+- **Cards** `rounded-2xl` with a 1px `ring-foreground/[0.07]` edge and a deeper `shadow-card`.
+- **Section headers** (`FormSection`): tinted `accent → card` band, solid indigo 40px icon tile,
+  a "Step N of 6" overline, 15px title. Step numbers come from
+  `src/components/invoice/editor/sections.ts`, the single list of sections.
+- **From & Bill to** is one section (`PartiesSection`): business and customer side by side with a
+  divider when the section is at least 672px wide (container query), stacked otherwise; each
+  party has a small sub-heading. Fields carry example placeholders.
+- **Section nav** (`EditorNav`): chips 1–6 that jump to each section (smooth scroll unless the
+  user prefers reduced motion) and highlight the section being edited. Sticky under the header
+  on desktop. Anchors are `section-*` so they never collide with form field ids.
+- **Panel headings**: "Invoice editor" and "Live preview" (desktop; the tabs label them on
+  mobile).
+- **Preview desk**: the paper sits on a `--desk` (`0.935 0.012 266`) surface; `print.css`
+  removes its background, padding and radius.
+- **Line items**: uppercase column header bar, row dividers with hover, and an item count +
+  subtotal footer. **Discount & tax** breakdown uses the indigo tint with a larger total.
+- **Fix**: line-item and custom-field DOM ids used React Hook Form's random `useFieldArray` keys,
+  which differ between server and client (hydration warning, the dev "1 Issue" badge). They now
+  use each row's own stable `id`.
+- **Blank start**: the page opens an empty invoice (`createBlankInvoice` in
+  `src/lib/invoice/new-invoice.ts`): generated number, today's issue date, due date +30 days, one
+  empty line, no custom fields. The sample invoice is at `/?demo`. A zero discount now reads
+  `$0.00` instead of `−$0.00`.
+
+Screenshots: [blank invoice](screenshots/ui-blank-invoice.png),
+[From & Bill to](screenshots/ui-parties-section.png), [desktop](screenshots/ui-refresh-desktop.png),
+[section nav after jumping to Line items](screenshots/ui-refresh-section-nav.png),
+[mobile](screenshots/ui-refresh-mobile.png).
 
 ## Screenshots (Phase 01)
 
