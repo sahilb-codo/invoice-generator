@@ -7,6 +7,7 @@ import { FormProvider, useForm, useWatch, type Control } from "react-hook-form";
 
 import { AppHeader } from "@/components/app/app-header";
 import { AdjustmentsSection } from "@/components/invoice/editor/adjustments-section";
+import { CustomFieldsSection } from "@/components/invoice/editor/custom-fields-section";
 import { InvoiceDetailsSection } from "@/components/invoice/editor/invoice-details-section";
 import { LineItemsSection } from "@/components/invoice/editor/line-items-section";
 import { NotesSection } from "@/components/invoice/editor/notes-section";
@@ -62,6 +63,7 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
                 </div>
                 <LineItemsSection />
                 <AdjustmentsSection />
+                <CustomFieldsSection />
                 <NotesSection />
               </form>
             }

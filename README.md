@@ -4,7 +4,7 @@ A customizable, browser-based invoice generator: edit an invoice with a live pre
 it as PDF, and email it over SMTP. No database: the invoice lives in the browser tab (persistence
 was descoped by the developer — see [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md#scope-changes)).
 
-> **Status:** Phases 00–03 (setup, design system, editor + live preview, calculations) complete. Features are added phase by phase — see
+> **Status:** Phases 00–04 (setup, design system, editor + live preview, calculations, custom fields) complete. Features are added phase by phase — see
 > [docs/phases/](docs/phases/) for what is actually implemented and verified.
 
 ## Tech stack

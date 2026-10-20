@@ -1,4 +1,5 @@
 import { toCents, type InvoiceTotals } from "@/lib/invoice/calculations";
+import { getVisibleCustomFields } from "@/lib/invoice/custom-fields";
 import { formatCents, formatDate, formatPercent, formatQuantity } from "@/lib/invoice/format";
 import type { InvoiceData } from "@/lib/invoice/types";
 import { cn } from "@/lib/utils";
@@ -12,9 +13,7 @@ interface InvoicePreviewProps {
 /** The invoice as a business document. Renders only data — no editor controls. */
 export function InvoicePreview({ invoice, totals, className }: InvoicePreviewProps) {
   const { business, customer } = invoice;
-  const visibleFields = invoice.customFields.filter(
-    (field) => field.visible && (field.label.trim() || field.value.trim()),
-  );
+  const visibleFields = getVisibleCustomFields(invoice.customFields);
 
   return (
     <article

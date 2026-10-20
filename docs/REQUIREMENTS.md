@@ -13,7 +13,7 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 | 4   | Dynamic line items (add / edit / remove)              | 02    | ✅                           |
 | 5   | Correct discount and tax sequence                     | 03    | ✅                           |
 | 6   | Mandatory $99.00 example passes                       | 03    | ✅                           |
-| 7   | Functional custom fields with visibility              | 04    | ⬜                           |
+| 7   | Functional custom fields with visibility              | 04    | ✅                           |
 | 8   | Hidden fields excluded from print output              | 04–05 | ⬜                           |
 | 9   | Working Print / Save as PDF                           | 05    | ⬜                           |
 | 10  | Real persistent database storage                      | 06    | ❌ descoped by developer     |

@@ -10,7 +10,8 @@ Budget: 3 hours.
 | 02 Invoice UI        | 16:41 | 16:51 | ~10 min  | Editor sections, line items, logo, e2e script, fixes |
 | 03 Calculations      | 16:52 | 16:58 | ~6 min   | Schema, 39 unit tests, discount & tax UI, e2e        |
 | Scope change (06/07) | 17:00 | 17:04 | ~4 min   | Remove Prisma/SQLite, Saved status, update docs      |
+| 04 Custom fields     | 17:06 | 17:10 | ~4 min   | Section, helper + tests, e2e, mobile fix             |
 
-**Running total:** ~42 min
+**Running total:** ~46 min
 
 Developer review / commit time between phases is not included unless noted.
