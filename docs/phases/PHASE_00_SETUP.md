@@ -1,6 +1,6 @@
 # Phase 00 — Project Setup
 
-**Status:** Complete. Code committed (`8d8a17d`); documentation commit pending.
+**Status:** Complete. Committed as `8d8a17d` (code) and `8972261` (docs).
 
 Prompt: [00-project-setup.md](../prompts/00-project-setup.md)
 
@@ -111,7 +111,7 @@ Commits are made by the developer (per the instruction in the prompt file).
 | Hash      | Message                                       | Contents                                                       |
 | --------- | --------------------------------------------- | -------------------------------------------------------------- |
 | `8d8a17d` | `init`                                        | Scaffold, dependencies, configs (made while docs were written) |
-| _pending_ | `docs: add project documentation and prompts` | Root README and `docs/`                                        |
+| `8972261` | `docs: add project documentation and prompts` | Root README and `docs/`                                        |
 
 ## Next phase
 

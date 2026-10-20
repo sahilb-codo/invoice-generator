@@ -24,5 +24,10 @@ Only results from commands that were actually run are recorded here.
 | 2026-10-20 | 00    | `npm run format:check` | ✅ all files formatted        |
 | 2026-10-20 | 00    | `npm run build`        | ✅ build succeeded            |
 
+| 2026-10-20 | 01 | `npm run typecheck` | ✅ no errors |
+| 2026-10-20 | 01 | `npm run lint` | ✅ no errors |
+| 2026-10-20 | 01 | `npm run build` | ✅ build succeeded |
+| 2026-10-20 | 01 | Desktop + mobile screenshots (headless Chrome) | ✅ layout as designed; mobile scrollWidth 390px (no overflow) |
+
 Unit tests for the calculation engine are added in Phase 03; the manual verification checklist is
 completed in Phase 09.

@@ -1,7 +1,7 @@
 # Calculation Rules
 
-> Status: specification from the assessment brief. The implementation, rounding details and test
-> results are added in Phase 03.
+> Status: core engine in `src/lib/invoice/calculations.ts` (added in Phase 01 so the preview can
+> render totals). Validation, rounding-policy details and tests are added in Phase 03.
 
 ## Required sequence
 
