@@ -3,7 +3,7 @@
 A customizable, browser-based invoice generator: edit an invoice with a live preview, print or save
 it as PDF, persist it to a database, manage invoices from a list, and email them over SMTP.
 
-> **Status:** Phases 00–02 (setup, design system, editor + live preview) complete. Features are added phase by phase — see
+> **Status:** Phases 00–03 (setup, design system, editor + live preview, calculations) complete. Features are added phase by phase — see
 > [docs/phases/](docs/phases/) for what is actually implemented and verified.
 
 ## Tech stack

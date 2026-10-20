@@ -46,7 +46,8 @@ commit order:
 | 00    | `8d8a17d` | `init` (project scaffold and configuration)     |
 | 00    | `8972261` | `docs: add project documentation and prompts`   |
 | 01    | `321a59c` | `feat: establish premium invoice design system` |
-| 02    | _pending_ | `feat: build invoice editor and live preview`   |
+| 02    | `d2912c8` | `feat: build invoice editor and live preview`   |
+| 03    | _pending_ | `feat: implement precise invoice calculations`  |
 
 ## Pushing
 

@@ -1,6 +1,6 @@
 # Phase 02 — Invoice Editor and Live Preview
 
-**Status:** Complete. Awaiting the developer's commit.
+**Status:** Complete. Committed as `d2912c8`.
 
 Prompt: [02-invoice-ui.md](../prompts/02-invoice-ui.md)
 
@@ -117,7 +117,7 @@ Screenshots: [desktop](../screenshots/phase-02-desktop.png),
 ## Git commit
 
 - Suggested message: `feat: build invoice editor and live preview`
-- Hash: _to be recorded at the start of Phase 03_
+- Hash: `d2912c8`
 
 ## Next phase
 

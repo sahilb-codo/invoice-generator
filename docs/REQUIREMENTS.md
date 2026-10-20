@@ -9,10 +9,10 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 | --- | ----------------------------------------------------- | ----- | ---------------------------- |
 | 1   | Premium, professional invoice UI                      | 01–02 | ⬜                           |
 | 2   | Responsive desktop and mobile layouts                 | 01–02 | ⬜                           |
-| 3   | Functional invoice editor and live preview            | 02    | ⬜                           |
-| 4   | Dynamic line items (add / edit / remove)              | 02    | ⬜                           |
-| 5   | Correct discount and tax sequence                     | 03    | ⬜                           |
-| 6   | Mandatory $99.00 example passes                       | 03    | ⬜                           |
+| 3   | Functional invoice editor and live preview            | 02    | ✅                           |
+| 4   | Dynamic line items (add / edit / remove)              | 02    | ✅                           |
+| 5   | Correct discount and tax sequence                     | 03    | ✅                           |
+| 6   | Mandatory $99.00 example passes                       | 03    | ✅                           |
 | 7   | Functional custom fields with visibility              | 04    | ⬜                           |
 | 8   | Hidden fields excluded from print output              | 04–05 | ⬜                           |
 | 9   | Working Print / Save as PDF                           | 05    | ⬜                           |

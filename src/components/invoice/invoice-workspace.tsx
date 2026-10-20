@@ -1,10 +1,12 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Printer, Save } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm, useWatch, type Control } from "react-hook-form";
 
 import { AppHeader } from "@/components/app/app-header";
+import { AdjustmentsSection } from "@/components/invoice/editor/adjustments-section";
 import { InvoiceDetailsSection } from "@/components/invoice/editor/invoice-details-section";
 import { LineItemsSection } from "@/components/invoice/editor/line-items-section";
 import { NotesSection } from "@/components/invoice/editor/notes-section";
@@ -14,6 +16,7 @@ import { StatusBadge } from "@/components/invoice/status-badge";
 import { WorkspaceLayout } from "@/components/invoice/workspace-layout";
 import { Button } from "@/components/ui/button";
 import { calculateTotals } from "@/lib/invoice/calculations";
+import { invoiceSchema } from "@/lib/invoice/schema";
 import type { InvoiceData } from "@/lib/invoice/types";
 
 interface InvoiceWorkspaceProps {
@@ -22,7 +25,12 @@ interface InvoiceWorkspaceProps {
 
 /** Owns the invoice form state; the editor writes to it and the preview reads from it. */
 export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
-  const form = useForm<InvoiceData>({ defaultValues: initialInvoice, mode: "onBlur" });
+  const form = useForm<InvoiceData>({
+    defaultValues: initialInvoice,
+    resolver: zodResolver(invoiceSchema),
+    // Validate a field when it loses focus, then live while it is being corrected.
+    mode: "onTouched",
+  });
 
   return (
     <FormProvider {...form}>
@@ -57,6 +65,7 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
                   <CustomerSection />
                 </div>
                 <LineItemsSection />
+                <AdjustmentsSection />
                 <NotesSection />
               </form>
             }

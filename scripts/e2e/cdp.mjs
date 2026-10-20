@@ -72,6 +72,8 @@ export async function launch({ port = 9333 } = {}) {
       send("Page.handleJavaScriptDialog", { accept: true });
   });
   await send("Runtime.enable");
+  // Headless pages are unfocused; without this, focus/blur events (used by form validation) never fire.
+  await send("Emulation.setFocusEmulationEnabled", { enabled: true });
   await send("Page.enable");
   await send("DOM.enable");
 
