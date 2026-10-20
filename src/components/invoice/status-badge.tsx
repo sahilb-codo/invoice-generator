@@ -1,4 +1,4 @@
-import { CircleCheck, CircleDashed, Send } from "lucide-react";
+import { CircleDashed, Send } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { InvoiceStatus } from "@/lib/invoice/types";
@@ -11,11 +11,6 @@ const STATUS_STYLES: Record<
     label: "Draft",
     className: "bg-secondary text-secondary-foreground ring-border",
     icon: CircleDashed,
-  },
-  SAVED: {
-    label: "Saved",
-    className: "bg-accent text-accent-foreground ring-primary/15",
-    icon: CircleCheck,
   },
   SENT: {
     label: "Sent",

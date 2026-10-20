@@ -1,7 +1,8 @@
 # Invoice Generator
 
 A customizable, browser-based invoice generator: edit an invoice with a live preview, print or save
-it as PDF, persist it to a database, manage invoices from a list, and email them over SMTP.
+it as PDF, and email it over SMTP. No database: the invoice lives in the browser tab (persistence
+was descoped by the developer — see [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md#scope-changes)).
 
 > **Status:** Phases 00–03 (setup, design system, editor + live preview, calculations) complete. Features are added phase by phase — see
 > [docs/phases/](docs/phases/) for what is actually implemented and verified.
@@ -9,7 +10,7 @@ it as PDF, persist it to a database, manage invoices from a list, and email them
 ## Tech stack
 
 Next.js 16 (App Router) · React 19 · TypeScript (strict) · Tailwind CSS v4 · shadcn/ui ·
-Lucide React · React Hook Form · Zod 4 · Prisma 7 + SQLite (better-sqlite3 adapter) · Nodemailer ·
+Lucide React · React Hook Form · Zod 4 · Nodemailer ·
 Vitest · ESLint · Prettier
 
 ## Getting started
@@ -24,16 +25,16 @@ Requires Node.js ≥ 20.19. Full details: [docs/ENVIRONMENT_SETUP.md](docs/ENVIR
 
 ## Scripts
 
-| Command                       | Purpose                       |
-| ----------------------------- | ----------------------------- |
-| `npm run dev`                 | Development server            |
-| `npm run build` / `npm start` | Production build / serve      |
-| `npm run typecheck`           | TypeScript check              |
-| `npm run lint`                | ESLint                        |
-| `npm test`                    | Unit tests (Vitest)           |
-| `npm run format`              | Prettier                      |
-| `npm run db:migrate`          | Prisma development migrations |
-| `npm run check`               | typecheck + lint + test       |
+| Command                       | Purpose                                 |
+| ----------------------------- | --------------------------------------- |
+| `npm run dev`                 | Development server                      |
+| `npm run build` / `npm start` | Production build / serve                |
+| `npm run typecheck`           | TypeScript check                        |
+| `npm run lint`                | ESLint                                  |
+| `npm test`                    | Unit tests (Vitest)                     |
+| `npm run format`              | Prettier                                |
+| `npm run e2e`                 | Browser checks (needs a running server) |
+| `npm run check`               | typecheck + lint + test                 |
 
 ## Environment variables
 
@@ -45,7 +46,7 @@ are used server-side only.
 
 - [Documentation index](docs/README.md)
 - [Architecture](docs/ARCHITECTURE.md) · [Calculation rules](docs/CALCULATION_RULES.md) ·
-  [Database schema](docs/DATABASE_SCHEMA.md) · [API](docs/API_DOCUMENTATION.md)
+  [API](docs/API_DOCUMENTATION.md)
 - [Testing](docs/TESTING.md) · [Deployment](docs/DEPLOYMENT.md) ·
   [Known limitations](docs/KNOWN_LIMITATIONS.md)
 - [Git workflow](docs/GIT_WORKFLOW.md) · [AI usage](docs/AI_USAGE.md) · [Time log](docs/TIME_LOG.md)

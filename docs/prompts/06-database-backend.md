@@ -1,5 +1,8 @@
 # Prompt 06 — Database and Backend
 
+> **Descoped (2026-10-20):** removed by the developer after Phase 03 — not implemented. See
+> [phases/PHASE_06_DATABASE.md](../phases/PHASE_06_DATABASE.md). The original prompt is kept below for the record.
+
 > **Source:** Extracted verbatim from the master prompt supplied on 2026-10-20
 > ("PHASE 7 — Database and Backend").
 

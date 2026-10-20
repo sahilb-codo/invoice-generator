@@ -2,6 +2,9 @@
 
 **Status:** Complete. Committed as `8d8a17d` (code) and `8972261` (docs).
 
+> **Later change:** Prisma, SQLite and dotenv set up here were removed after Phase 03 when the
+> developer descoped the database — see [PHASE_06_DATABASE.md](PHASE_06_DATABASE.md).
+
 Prompt: [00-project-setup.md](../prompts/00-project-setup.md)
 
 ## Objective

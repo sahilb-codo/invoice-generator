@@ -1,4 +1,4 @@
-export const INVOICE_STATUSES = ["DRAFT", "SAVED", "SENT"] as const;
+export const INVOICE_STATUSES = ["DRAFT", "SENT"] as const;
 export type InvoiceStatus = (typeof INVOICE_STATUSES)[number];
 
 export const DISCOUNT_TYPES = ["FIXED", "PERCENT"] as const;

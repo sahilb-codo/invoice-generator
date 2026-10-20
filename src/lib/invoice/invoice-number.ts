@@ -1,7 +1,6 @@
 /**
  * Generates a readable invoice number such as "INV-20261020-K7Q2".
- * The suffix is random, so numbers created in different sessions do not collide in practice;
- * uniqueness is enforced by the database once persistence is added.
+ * The suffix is random, so numbers created in different sessions are unlikely to collide.
  */
 export function generateInvoiceNumber(date: Date = new Date()): string {
   const y = date.getFullYear();

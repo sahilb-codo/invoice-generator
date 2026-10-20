@@ -19,7 +19,7 @@ export function LineItemsSection() {
     register,
     formState: { errors },
   } = useFormContext<InvoiceData>();
-  // keyName "key": our items already have a persistent `id` that must not be overwritten.
+  // keyName "key": our items already have their own `id` that must not be overwritten.
   const { fields, append, remove } = useFieldArray({ control, name: "lineItems", keyName: "key" });
   const items = useWatch({ control, name: "lineItems" });
   const listError: string | undefined =

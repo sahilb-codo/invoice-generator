@@ -34,13 +34,6 @@ yarn-error.log*
 .env*
 !.env.example
 
-# prisma: generated client and local SQLite databases
-/src/generated/
-*.db
-*.db-journal
-*.db-wal
-*.db-shm
-
 # vercel
 .vercel
 

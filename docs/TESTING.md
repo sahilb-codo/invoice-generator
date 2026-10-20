@@ -3,7 +3,6 @@
 ## Commands
 
 ```bash
-npx prisma validate     # schema validity
 npm run typecheck       # TypeScript
 npm run lint            # ESLint
 npm test                # Vitest unit tests

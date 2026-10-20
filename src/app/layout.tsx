@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "InvoiceStudio — Invoice Generator",
-  description: "Create, preview, print, save and email professional invoices.",
+  description: "Create, preview, print and email professional invoices.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

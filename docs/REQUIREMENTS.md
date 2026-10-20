@@ -16,9 +16,9 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 | 7   | Functional custom fields with visibility              | 04    | ⬜                           |
 | 8   | Hidden fields excluded from print output              | 04–05 | ⬜                           |
 | 9   | Working Print / Save as PDF                           | 05    | ⬜                           |
-| 10  | Real persistent database storage                      | 06    | ⬜                           |
-| 11  | Invoice retrieval after reload                        | 06    | ⬜                           |
-| 12  | Invoice list and management                           | 07    | ⬜                           |
+| 10  | Real persistent database storage                      | 06    | ❌ descoped by developer     |
+| 11  | Invoice retrieval after reload                        | 06    | ❌ descoped by developer     |
+| 12  | Invoice list and management                           | 07    | ❌ descoped by developer     |
 | 13  | Real SMTP integration when configured                 | 08    | ⬜                           |
 | 14  | No fake success states                                | all   | ⬜                           |
 | 15  | Tests, lint, type checks and build run and documented | 09    | ⬜                           |
@@ -35,7 +35,7 @@ Checklist derived from the assessment brief. Items are ticked only after they ar
 - **Business:** name, email, phone, address, website, optional tax registration number, optional logo.
 - **Customer:** name, email, phone, billing address, optional company name.
 - **Metadata:** invoice number (auto-generated, editable), issue date, due date, currency (USD only),
-  optional payment terms, status (Draft / Saved / Sent).
+  optional payment terms, status (Draft / Sent — "Saved" removed with the database).
 - **Line items:** description, quantity, unit price, calculated amount.
 - **Adjustments:** fixed discount, tax rate.
 - **Other:** notes, payment instructions, custom fields (label, value, visible).

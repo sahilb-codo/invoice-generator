@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, Printer, Save } from "lucide-react";
+import { Mail, Printer } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm, useWatch, type Control } from "react-hook-form";
 
@@ -42,10 +42,6 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
               <Button variant="ghost" size="lg" disabled title="Available in Phase 05">
                 <Printer aria-hidden />
                 <span className="hidden sm:inline">Print</span>
-              </Button>
-              <Button variant="outline" size="lg" disabled title="Available in Phase 06">
-                <Save aria-hidden />
-                <span className="hidden sm:inline">Save</span>
               </Button>
               <Button size="lg" disabled title="Available in Phase 08">
                 <Mail aria-hidden />

@@ -1,6 +1,6 @@
 # Phase 03 — Financial Calculation Engine
 
-**Status:** Complete. Awaiting the developer's commit.
+**Status:** Complete. Committed as `a67e8f1`.
 
 Prompt: [03-calculation-engine.md](../prompts/03-calculation-engine.md)
 
@@ -100,7 +100,7 @@ Failures during development (fixed):
 ## Git commit
 
 - Suggested message: `feat: implement precise invoice calculations`
-- Hash: _to be recorded at the start of Phase 04_
+- Hash: `a67e8f1`
 
 ## Next phase
 

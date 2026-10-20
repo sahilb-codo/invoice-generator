@@ -85,7 +85,7 @@ inactive tab is hidden with CSS, so form state is never duplicated.
 | `WorkspaceLayout`    | `src/components/invoice/workspace-layout.tsx` | Responsive editor/preview shell                                                                             |
 | `FormSection`        | `src/components/invoice/form-section.tsx`     | Card with icon, title, description, optional header action                                                  |
 | `FormField`          | `src/components/invoice/form-field.tsx`       | Label, optional marker, hint / error with ids for `aria-describedby`                                        |
-| `StatusBadge`        | `src/components/invoice/status-badge.tsx`     | Draft (neutral), Saved (indigo), Sent (green) with icons — not colour alone                                 |
+| `StatusBadge`        | `src/components/invoice/status-badge.tsx`     | Draft (neutral), Sent (green) with icons — not colour alone                                                 |
 | `InvoicePreview`     | `src/components/invoice/invoice-preview.tsx`  | The business document; renders data only, no controls                                                       |
 | shadcn/ui primitives | `src/components/ui/*`                         | button, input, textarea, label, select, switch, tabs, badge, card, separator, tooltip, alert-dialog, sonner |
 

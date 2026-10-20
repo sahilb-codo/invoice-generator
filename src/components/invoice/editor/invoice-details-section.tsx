@@ -81,7 +81,9 @@ export function InvoiceDetailsSection() {
           <span className="text-foreground/80 text-xs font-medium">Status</span>
           <div className="flex h-9 items-center gap-2">
             <StatusBadge status={status} />
-            <span className="text-muted-foreground text-xs">Updated when you save or send.</span>
+            <span className="text-muted-foreground text-xs">
+              Changes to Sent after the email is delivered.
+            </span>
           </div>
         </div>
       </div>

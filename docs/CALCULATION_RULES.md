@@ -5,8 +5,8 @@ Implementation: [`src/lib/invoice/calculations.ts`](../src/lib/invoice/calculati
 [`calculations.test.ts`](../src/lib/invoice/calculations.test.ts),
 [`schema.test.ts`](../src/lib/invoice/schema.test.ts).
 
-The same engine runs in the live preview, the editor's totals breakdown and (from Phase 06) on the
-server before every save or send. The server recalculates from validated inputs and never trusts
+The same engine runs in the live preview, the editor's totals breakdown and (from Phase 08) on the
+server before an invoice is emailed. The server recalculates from validated inputs and never trusts
 totals sent by the client (`parseInvoice` strips unknown keys such as `totals`).
 
 ## Required sequence

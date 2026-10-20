@@ -6,7 +6,7 @@
 | [REQUIREMENTS.md](REQUIREMENTS.md)           | Functional and non-functional requirements checklist |
 | [ARCHITECTURE.md](ARCHITECTURE.md)           | Stack, folder structure, data flow                   |
 | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md)         | Tokens, typography, components                       |
-| [DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)     | Prisma models and schema decisions                   |
+| [DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)     | No database (descoped) — data shape and notes        |
 | [API_DOCUMENTATION.md](API_DOCUMENTATION.md) | Server actions / route handlers                      |
 | [CALCULATION_RULES.md](CALCULATION_RULES.md) | Totals sequence and rounding policy                  |
 | [TESTING.md](TESTING.md)                     | How to run checks and actual results                 |

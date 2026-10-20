@@ -2,7 +2,7 @@ import type { DiscountType, LineItem } from "./types";
 
 /**
  * Invoice calculation engine — the single source of truth for money.
- * Used by the live preview and re-run on the server before saving or sending.
+ * Used by the live preview and re-run on the server before an invoice is emailed.
  *
  * All arithmetic is done on integers (cents, and fixed-point scaled
  * quantities/rates) so that floating-point error cannot leak into totals.

@@ -1,6 +1,7 @@
 # API Documentation
 
-> Status: not started — server operations are added in Phase 06 (CRUD) and Phase 08 (email).
+> Status: no server operations yet. The only planned server endpoint is the email send action
+> (Phase 08). Database CRUD was descoped (see [phases/PHASE_06_DATABASE.md](phases/PHASE_06_DATABASE.md)).
 
-Every operation will validate input with Zod on the server and recalculate totals with the shared
-calculation module before writing to the database.
+The email action will validate the submitted invoice with `parseInvoice()` and recalculate totals
+on the server; totals sent by the browser are ignored.

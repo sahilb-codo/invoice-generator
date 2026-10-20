@@ -26,28 +26,29 @@ rewriting, no secrets (`.env` is git-ignored; only `.env.example` with placehold
 The master prompt numbers phases 0–10 starting with the Git workflow; the docs number them by
 commit order:
 
-| Doc phase              | Master prompt section | Suggested commit message                                  |
-| ---------------------- | --------------------- | --------------------------------------------------------- |
-| 00 Setup               | Phase 0 + Phase 1     | `chore: initialize Next.js project with tooling and docs` |
-| 01 Design system       | Phase 2               | `feat: establish premium invoice design system`           |
-| 02 Invoice UI          | Phase 3               | `feat: build invoice editor and live preview`             |
-| 03 Calculations        | Phase 4               | `feat: implement precise invoice calculations`            |
-| 04 Custom fields       | Phase 5               | `feat: add customizable invoice fields`                   |
-| 05 Print / PDF         | Phase 6               | `feat: implement invoice print layout`                    |
-| 06 Database            | Phase 7               | `feat: persist invoices with Prisma`                      |
-| 07 Management          | Phase 8               | `feat: add invoice management`                            |
-| 08 Email               | Phase 9               | `feat: integrate SMTP email delivery`                     |
-| 09–10 Testing & review | Phase 10              | `test: verify invoice workflows and document setup`       |
+| Doc phase              | Master prompt section | Suggested commit message                                                    |
+| ---------------------- | --------------------- | --------------------------------------------------------------------------- |
+| 00 Setup               | Phase 0 + Phase 1     | `chore: initialize Next.js project with tooling and docs`                   |
+| 01 Design system       | Phase 2               | `feat: establish premium invoice design system`                             |
+| 02 Invoice UI          | Phase 3               | `feat: build invoice editor and live preview`                               |
+| 03 Calculations        | Phase 4               | `feat: implement precise invoice calculations`                              |
+| 04 Custom fields       | Phase 5               | `feat: add customizable invoice fields`                                     |
+| 05 Print / PDF         | Phase 6               | `feat: implement invoice print layout`                                      |
+| 06 Database            | Phase 7               | ❌ descoped — `chore: remove database layer and descope invoice management` |
+| 07 Management          | Phase 8               | ❌ descoped (same commit)                                                   |
+| 08 Email               | Phase 9               | `feat: integrate SMTP email delivery`                                       |
+| 09–10 Testing & review | Phase 10              | `test: verify invoice workflows and document setup`                         |
 
 ## Commit log
 
-| Phase | Hash      | Message                                         |
-| ----- | --------- | ----------------------------------------------- |
-| 00    | `8d8a17d` | `init` (project scaffold and configuration)     |
-| 00    | `8972261` | `docs: add project documentation and prompts`   |
-| 01    | `321a59c` | `feat: establish premium invoice design system` |
-| 02    | `d2912c8` | `feat: build invoice editor and live preview`   |
-| 03    | _pending_ | `feat: implement precise invoice calculations`  |
+| Phase | Hash      | Message                                                       |
+| ----- | --------- | ------------------------------------------------------------- |
+| 00    | `8d8a17d` | `init` (project scaffold and configuration)                   |
+| 00    | `8972261` | `docs: add project documentation and prompts`                 |
+| 01    | `321a59c` | `feat: establish premium invoice design system`               |
+| 02    | `d2912c8` | `feat: build invoice editor and live preview`                 |
+| 03    | `a67e8f1` | `feat: implement precise invoice calculations`                |
+| 06/07 | _pending_ | `chore: remove database layer and descope invoice management` |
 
 ## Pushing
 

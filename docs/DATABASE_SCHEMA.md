@@ -1,11 +1,12 @@
 # Database Schema
 
-> Status: not started — models are added in Phase 06.
+**No database.** Persistence was removed from scope by the developer on 2026-10-20 (see
+[phases/PHASE_06_DATABASE.md](phases/PHASE_06_DATABASE.md)).
 
-Baseline from Phase 00:
+Invoice data lives only in the browser's form state (React Hook Form) for the current tab. Its
+shape is the `InvoiceData` type in [`src/lib/invoice/types.ts`](../src/lib/invoice/types.ts),
+validated by [`src/lib/invoice/schema.ts`](../src/lib/invoice/schema.ts).
 
-- Prisma 7.10.1 with `prisma.config.ts` at the project root.
-- Generator `prisma-client`, output `src/generated/prisma` (git-ignored).
-- Datasource: SQLite; URL from `DATABASE_URL` (default `file:./prisma/dev.db`).
-- Runtime access through the `@prisma/adapter-better-sqlite3` driver adapter.
-- Schema kept portable so a later PostgreSQL migration only changes the provider and adapter.
+If persistence is added later, the natural mapping is one `Invoice` row with the scalar fields as
+columns, line items and custom fields as child tables (or JSON), and the server-recalculated
+totals stored in integer cents.
