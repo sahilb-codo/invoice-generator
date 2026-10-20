@@ -36,7 +36,7 @@ commit order:
 | 05 Print / PDF         | Phase 6               | `feat: implement invoice print layout`                                      |
 | 06 Database            | Phase 7               | ❌ descoped — `chore: remove database layer and descope invoice management` |
 | 07 Management          | Phase 8               | ❌ descoped (same commit)                                                   |
-| 08 Email               | Phase 9               | `feat: integrate SMTP email delivery`                                       |
+| 08 Email               | Phase 9               | `feat: integrate Resend email delivery`                                     |
 | 09–10 Testing & review | Phase 10              | `test: verify invoice workflows and document setup`                         |
 
 ## Commit log
@@ -50,7 +50,8 @@ commit order:
 | 03    | `a67e8f1` | `feat: implement precise invoice calculations`                |
 | 06/07 | `7bd136d` | `chore: remove database layer and descope invoice management` |
 | 04    | `db67053` | `feat: add customizable invoice fields`                       |
-| 05    | _pending_ | `feat: implement invoice print layout`                        |
+| 05    | `a5eb734` | `feat: implement invoice print layout`                        |
+| 08    | _pending_ | `feat: integrate Resend email delivery`                       |
 
 ## Pushing
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, Printer } from "lucide-react";
+import { Printer } from "lucide-react";
 import { useMemo } from "react";
 import { FormProvider, useForm, useWatch, type Control } from "react-hook-form";
 
@@ -13,6 +13,7 @@ import { LineItemsSection } from "@/components/invoice/editor/line-items-section
 import { NotesSection } from "@/components/invoice/editor/notes-section";
 import { BusinessSection, CustomerSection } from "@/components/invoice/editor/party-sections";
 import { InvoicePreview } from "@/components/invoice/invoice-preview";
+import { SendInvoiceButton } from "@/components/invoice/send-invoice-dialog";
 import { StatusBadge } from "@/components/invoice/status-badge";
 import { WorkspaceLayout } from "@/components/invoice/workspace-layout";
 import { Button } from "@/components/ui/button";
@@ -41,10 +42,7 @@ export function InvoiceWorkspace({ initialInvoice }: InvoiceWorkspaceProps) {
           actions={
             <>
               <PrintButton control={form.control} />
-              <Button size="lg" disabled title="Available in Phase 08">
-                <Mail aria-hidden />
-                <span className="hidden sm:inline">Send invoice</span>
-              </Button>
+              <SendInvoiceButton />
             </>
           }
         />

@@ -1,6 +1,6 @@
 # Phase 05 — Print and Save as PDF
 
-**Status:** Complete. Awaiting the developer's commit.
+**Status:** Complete. Committed as `a5eb734`.
 
 Prompt: [05-print-pdf.md](../prompts/05-print-pdf.md)
 
@@ -108,7 +108,7 @@ wrappers was kept, as it removes another known Chrome limitation.
 ## Git commit
 
 - Suggested message: `feat: implement invoice print layout`
-- Hash: _to be recorded at the start of Phase 08_
+- Hash: `a5eb734`
 
 ## Next phase
 

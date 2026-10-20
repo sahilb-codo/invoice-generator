@@ -39,12 +39,20 @@ Only results from commands that were actually run are recorded here.
 | 2026-10-20 | 05    | `npm run e2e:print` (incl. Chrome `printToPDF`)          | ✅ 19/19 — A4, demo 1 page, 40 lines 3 pages                  |
 | 2026-10-20 | 05    | `npm run e2e` (all suites)                               | ✅ 26/26, 23/23, 19/19, 19/19                                 |
 | 2026-10-20 | 05    | `npm test` / `typecheck` / `lint` / `build`              | ✅ 44/44                                                      |
+| 2026-10-20 | 08    | `npm test` (SMTP version, superseded)                    | ✅ 67/67                                                      |
+| 2026-10-20 | 08    | `npm run e2e:email` (SMTP version, superseded)           | ✅ 21/21 after fixing a test expectation                      |
+| 2026-10-20 | 08    | `npm test` (Resend, fake local API)                      | ✅ 6 files, 66/66                                             |
+| 2026-10-20 | 08    | `npm run e2e:email` (Resend, fake local API)             | ✅ 22/22                                                      |
+| 2026-10-20 | 08    | `npm run e2e` (all suites)                               | ✅ 26/26, 23/23, 19/19, 19/19, 22/22                          |
+| 2026-10-20 | 08    | Real Resend delivery                                     | ⏳ not run — no key in `.env` yet                             |
 
 ## Browser (e2e) checks
 
 `scripts/e2e/` drives headless Chrome through the DevTools Protocol (Node 22 built-in WebSocket,
 no extra dependencies). Start the app (`npm run build && npm start`), then run
-`npm run e2e` (or `e2e:editor` / `e2e:calculations` / `e2e:custom-fields` / `e2e:print`). Set `CHROME_PATH` if Chrome/Edge is not in a standard location and `OUT=<dir>`
+`npm run e2e` (or `e2e:editor` / `e2e:calculations` / `e2e:custom-fields` / `e2e:print` / `e2e:email`).
+`e2e:email` starts its own app instances and a fake Resend API (`tests/support/fake-resend.mjs`),
+so it never sends real email or uses the key in `.env`. Set `CHROME_PATH` if Chrome/Edge is not in a standard location and `OUT=<dir>`
 to save screenshots.
 
 ## Unit tests

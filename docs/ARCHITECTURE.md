@@ -13,7 +13,7 @@
 | Icons         | Lucide React                                     | 1.60.0     |
 | Forms         | React Hook Form + `@hookform/resolvers`          | 7.90 / 5.9 |
 | Validation    | Zod                                              | 4.6.7      |
-| Email         | Nodemailer (SMTP)                                | 10.1.7     |
+| Email         | Resend (official SDK) via a Server Action        | 6.34.1     |
 | Tests         | Vitest                                           | 5.0.5      |
 | Lint / format | ESLint 9 (`eslint-config-next`), Prettier 3      | —          |
 
@@ -27,7 +27,7 @@ src/
     invoice/             # Workspace, editor sections, preview
   lib/
     invoice/             # Pure domain logic: types, schema, calculations (Phase 03)
-    server/              # Server-only: SMTP email (Phase 08)
+    server/              # Server-only: Resend email config, email builder, rate limit
 docs/                    # Documentation
 ```
 
@@ -36,7 +36,8 @@ docs/                    # Documentation
 - **Single source of truth for money:** one pure calculation module used by the client preview and
   re-run on the server before an invoice is emailed. The server never trusts client totals.
 - **Validation at the boundary:** one Zod schema shared by the form and the server actions.
-- **Server-only secrets:** SMTP credentials are read only in server code.
+- **Server-only secrets:** `RESEND_API_KEY` is read only in server code (`server-only` modules,
+  Server Actions in `src/app/actions/`).
 - **No database:** persistence was descoped (see [phases/PHASE_06_DATABASE.md](phases/PHASE_06_DATABASE.md)); invoice state lives in the browser form.
 - **Small components:** editor sections, preview and list are separate components, not one giant
   component.

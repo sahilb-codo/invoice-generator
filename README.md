@@ -1,16 +1,16 @@
 # Invoice Generator
 
 A customizable, browser-based invoice generator: edit an invoice with a live preview, print or save
-it as PDF, and email it over SMTP. No database: the invoice lives in the browser tab (persistence
+it as PDF, and email it through Resend. No database: the invoice lives in the browser tab (persistence
 was descoped by the developer — see [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md#scope-changes)).
 
-> **Status:** Phases 00–05 (setup, design system, editor + live preview, calculations, custom fields, print / PDF) complete. Features are added phase by phase — see
+> **Status:** Phases 00–05 and 08 (setup, design system, editor + live preview, calculations, custom fields, print / PDF, Resend email) complete; 06–07 descoped. Features are added phase by phase — see
 > [docs/phases/](docs/phases/) for what is actually implemented and verified.
 
 ## Tech stack
 
 Next.js 16 (App Router) · React 19 · TypeScript (strict) · Tailwind CSS v4 · shadcn/ui ·
-Lucide React · React Hook Form · Zod 4 · Nodemailer ·
+Lucide React · React Hook Form · Zod 4 · Resend ·
 Vitest · ESLint · Prettier
 
 ## Getting started
@@ -38,9 +38,14 @@ Requires Node.js ≥ 20.19. Full details: [docs/ENVIRONMENT_SETUP.md](docs/ENVIR
 
 ## Environment variables
 
-See [.env.example](.env.example) and the reference table in
-[docs/ENVIRONMENT_SETUP.md](docs/ENVIRONMENT_SETUP.md#environment-variables). SMTP credentials
-are used server-side only.
+| Variable         | Purpose                                                                                     |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY` | Resend API key (server-side only)                                                           |
+| `EMAIL_FROM`     | Sender; domain verified in Resend, or `onboarding@resend.dev` for tests to your own address |
+
+See [.env.example](.env.example) and [docs/ENVIRONMENT_SETUP.md](docs/ENVIRONMENT_SETUP.md#setting-up-resend)
+for step-by-step Resend setup. Without these variables the app works; only sending is disabled,
+with an explanation in the Send dialog.
 
 ## Documentation
 

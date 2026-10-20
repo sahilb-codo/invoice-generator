@@ -1,7 +1,14 @@
-# Prompt 08 — SMTP Email Integration
+# Prompt 08 — Email Integration (SMTP → Resend)
 
 > **Source:** Extracted verbatim from the master prompt supplied on 2026-10-20
 > ("PHASE 9 — SMTP Email Integration").
+>
+> **Change during implementation (2026-10-20):** after the SMTP version had been built and tested
+> (not committed), the developer instructed: _"i want to use resend mailer i have resend auth key.
+> so please implement the resend mailer — change the plan little bit"_. Delivery therefore uses
+> the **Resend** API instead of Nodemailer/SMTP; `SMTP_*` variables are replaced by
+> `RESEND_API_KEY` and `EMAIL_FROM`. All other requirements below (server-side only, validation,
+> Sent only after successful delivery, setup message, no automatic test emails) still apply.
 
 Implement actual server-side email delivery using Nodemailer.
 

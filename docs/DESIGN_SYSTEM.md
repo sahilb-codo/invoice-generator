@@ -28,7 +28,7 @@ Light theme only: invoices are business documents that print on white paper.
 | `--border` / `--input`                   | `0.915 0.008 264` / `0.885 0.01 264` | Hairlines / form control borders      |
 | `--destructive`                          | `0.56 0.2 25`                        | Errors, delete                        |
 | `--success` / `--success-soft`           | `0.52 0.12 160` / `0.96 0.035 160`   | Sent status                           |
-| `--warning` / `--warning-soft`           | `0.55 0.13 70` / `0.97 0.04 85`      | Configuration warnings (e.g. SMTP)    |
+| `--warning` / `--warning-soft`           | `0.55 0.13 70` / `0.97 0.04 85`      | Configuration warnings (e.g. email)   |
 
 ### Contrast (WCAG 2.x, computed from the OKLCH values)
 
