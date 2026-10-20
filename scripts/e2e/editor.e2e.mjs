@@ -79,6 +79,33 @@ const sections = await page.eval(
 );
 check("section nav links all resolve", sections.length === 6 && sections.every(Boolean));
 
+// Jumping from the first to the last section highlights only the target, not every section
+// passed during the smooth scroll.
+const highlighted = await page.eval(`new Promise((resolve) => {
+  const seen = new Set();
+  const current = () => document.querySelector('nav[aria-label="Invoice sections"] a[aria-current]')?.textContent;
+  document.querySelector('nav[aria-label="Invoice sections"] a[href="#section-notes"]').click();
+  const timer = setInterval(() => seen.add(current()), 16);
+  setTimeout(() => { clearInterval(timer); seen.add(current()); resolve([...seen]); }, 1600);
+})`);
+check(
+  "section jump highlights only the target",
+  highlighted.length === 1 && highlighted[0] === "6Notes",
+  highlighted.join(" | "),
+);
+// Notes is the last section, so the page may hit the bottom before its top reaches the header.
+const jump = await page.eval(`({
+  top: document.getElementById('section-notes').getBoundingClientRect().top,
+  atBottom: innerHeight + scrollY >= document.documentElement.scrollHeight - 4,
+})`);
+check(
+  "section jump scrolls to the section",
+  jump.top < 400 || (jump.atBottom && jump.top < 1000), // 1000 = viewport height
+  `top=${Math.round(jump.top)} atBottom=${jump.atBottom}`,
+);
+await page.eval(`window.scrollTo({ top: 0 }); true`);
+await page.sleep(300);
+
 await page.fill("#business-name", "Acme Consulting LLC");
 check("business name updates preview", (await previewText()).includes("Acme Consulting LLC"));
 await page.fill("#business-taxId", "");

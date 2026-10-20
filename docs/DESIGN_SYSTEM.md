@@ -115,7 +115,10 @@ identical quiet headers). Changes:
   party has a small sub-heading. Fields carry example placeholders.
 - **Section nav** (`EditorNav`): chips 1–6 that jump to each section (smooth scroll unless the
   user prefers reduced motion) and highlight the section being edited. Sticky under the header
-  on desktop. Anchors are `section-*` so they never collide with form field ids.
+  on desktop. Anchors are `section-*` so they never collide with form field ids. One indigo pill
+  slides between chips (300ms, off for reduced motion). During a jump the highlight stays on the
+  target until the scroll ends (`scrollend`, 1.2s fallback) instead of passing every section on
+  the way; the active chip is scrolled into view when the bar overflows (mobile).
 - **Panel headings**: "Invoice editor" and "Live preview" (desktop; the tabs label them on
   mobile).
 - **Preview desk**: the paper sits on a `--desk` (`0.935 0.012 266`) surface; `print.css`
